@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css';
 import GoogleLogin from 'react-google-login';
 
 const Login = () => {
@@ -19,9 +20,9 @@ const Login = () => {
             </h2>
             
           </div>
-          <div className='mt-5 p-5'>
-              <h4 className='mt-5'>Nutriendo tu Bienestar: “Tu guía personalizada hacia una vida saludable."</h4>
-          </div>
+            <div className='mt-5 p-5 login-description'>
+                <h1 className='mt-5'>Nutriendo tu Bienestar: “Tu guía personalizada hacia una vida saludable."</h1>
+            </div>
         </div>
        
         {/* Columna para el formulario */}

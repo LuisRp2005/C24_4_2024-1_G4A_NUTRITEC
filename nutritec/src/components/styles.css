@@ -1,0 +1,25 @@
+/* Estilos CSS */
+
+.login-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    min-height: 80%;
+  }
+  
+  .login-description h1 {
+    font-size: 3.5rem; /* Ajusta el tamaño de fuente según tu preferencia */
+  }
+  
+  .login-description::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%; /* Modifica la altura del pseudo-elemento */
+    background: linear-gradient(rgba(255, 255, 255, 0), #FFF5E0);
+  }
+  
