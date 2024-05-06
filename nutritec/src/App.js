@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react'; // Importamos ambos hooks desde 'react'
 import './App.css';
 import Login from './pages/Login';
 import { gapi } from 'gapi-script';
 import Home from './pages/home';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-
 
 const clientID = "562434628830-oth6ci1o114k7bfgstmqaq0ardicrk1l.apps.googleusercontent.com";
 
