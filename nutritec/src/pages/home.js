@@ -1,3 +1,4 @@
+
 import React from 'react';
 import '../pages/styles.css';
 import NavBar from '../components/Navbar';
