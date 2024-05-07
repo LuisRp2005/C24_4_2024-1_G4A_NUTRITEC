@@ -3,11 +3,14 @@ import '../pages/styles.css';
 
 const NavBar = () => {
     return (
-        <div className="container-fluid p-0 nav-bar bg-black">
-            <nav className="navbar navbar-expand-lg bg-none navbar-dark py-3">
-                <a href="/home" className="navbar-brand px-lg-4 m-0">
-                    <h1 className="m-0 display-4 text-white">NutriTec</h1>
-                </a>
+        <div className="container-fluid p-0 nav-bar">
+            <nav className="navbar navbar-expand-lg bg-none navbar-dark" style={{ background: 'linear-gradient(to bottom, rgb(0, 0, 0), rgb(0,0,0 ))' }}>
+            <a href="/home" className="navbar-brand px-lg-4 m-0">
+                <h1 className="m-0 display-4">
+                    <span style={{ color: '#7AC534'}}>Nutri</span>
+                    <span style={{ color: 'white'}}>Tec</span>
+                </h1>
+            </a>
                 <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span className="navbar-toggler-icon"></span>
                 </button>
