@@ -12,18 +12,16 @@ const Login = () => {
     <div className='container-fluid'>
       <div className="row">
         {/* Columna para la imagen */}
-        <div className="col-md-6 d-none d-md-block" style={{ background: '#FFF5E0', height: '100vh' }}>
-          <div className=' flex-column'>
-            <h2 className='p-5'>
+        <div className="col-md-6 d-none d-md-block" style={{ background: 'linear-gradient(135deg,  #c0af72, #f2df9b)', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <h1 className='p-4 mt-5' style={{fontWeight: 'bold',fontSize: '3rem' }}>
               <span style={{ color: 'green' }}>Nutri</span>
               <span style={{ color: '#141E46' }}>Tec</span>
-            </h2>
-            
-          </div>
-            <div className='mt-5 p-5 login-description'>
-                <h1 className='mt-5'>Nutriendo tu Bienestar: “Tu guía personalizada hacia una vida saludable."</h1>
-            </div>
+          </h1>
+          <p style={{ color: '#FFF', fontSize: '2.5rem', marginTop: '19rem',background: 'linear-gradient(to top, rgba(255, 255, 250, 0), #000000)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',fontWeight: 'bold'   }}>
+            Nutriendo tu Bienestar: “Tu guía personalizada hacia una vida saludable."
+          </p>
         </div>
+
        
         {/* Columna para el formulario */}
         <div className="col-md-6" style={{ height: '100vh', overflowY: 'auto' }}>
