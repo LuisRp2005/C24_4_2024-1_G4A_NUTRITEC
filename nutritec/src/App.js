@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'; // Importamos ambos hooks desde 'react'
+import React, { useEffect} from 'react'; // Importamos ambos hooks desde 'react'
 import './App.css';
 import Login from './pages/Login';
 import { gapi } from 'gapi-script';

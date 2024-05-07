@@ -1,12 +1,8 @@
 import React from 'react';
 import '../pages/styles.css';
-import GoogleLogin from 'react-google-login';
+import LoginButton from "../components/login";
 
 const Login = () => {
-
-  const RespuestaGoogle = (response) => {
-    console.log(response)
-  }
 
   return (
     <div className='container-fluid'>
@@ -44,14 +40,7 @@ const Login = () => {
                   
                   <p className='mt-3'>O también:</p>
 
-                 <GoogleLogin
-                  clientId="562434628830-oth6ci1o114k7bfgstmqaq0ardicrk1l.apps.googleusercontent.com"
-                  buttonText='Inicia Sesión con Correo de TECSUP'
-                  onSuccess={RespuestaGoogle}
-                  onFailure={RespuestaGoogle}
-                  cookiePolicy={'single_host_origin'}
-                  isSignedIn={true}
-                 />
+                 <LoginButton />
               </div>
             </form>
           </div>
