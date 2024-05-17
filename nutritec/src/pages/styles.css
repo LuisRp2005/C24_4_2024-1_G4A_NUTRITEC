@@ -22,5 +22,43 @@
     height: 25%; /* Modifica la altura del pseudo-elemento */
     background: linear-gradient(rgba(255, 255, 255, 0), #FFF5E0);
   }
+/* Estilos para las tarjetas de ejercicios */
+.blog-item {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.blog-item:hover {
+  transform: translateY(-5px);
+}
+
+.blog-date {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.blog-date h6 {
+  margin-bottom: -1px;
+}
+
+.img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+.h5 {
+  font-size: 1.25rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
 
   

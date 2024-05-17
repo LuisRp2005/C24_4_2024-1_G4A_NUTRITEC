@@ -18,7 +18,7 @@ const NavBar = () => {
                     <div className="navbar-nav ml-auto p-4">
                         <a href="/home" className="nav-item nav-link active">Home</a>
                         <a href="/ViewEjercicio" className="nav-item nav-link">Ejercicios</a>
-                        <a href="service.html" className="nav-item nav-link">Service</a>
+                        <a href="service.html" className="nav-item nav-link">Comida</a>
                         <a href="menu.html" className="nav-item nav-link">Menu</a>
                         <div className="nav-item dropdown">
                             <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
