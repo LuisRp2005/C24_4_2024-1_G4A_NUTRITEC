@@ -1,64 +1,89 @@
 /* Estilos CSS */
 
 .login-description {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    position: relative;
-    min-height: 80%;
-  }
-  
-  .login-description h1 {
-    font-size: 3.5rem; /* Ajusta el tamaño de fuente según tu preferencia */
-  }
-  
-  .login-description::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 25%; /* Modifica la altura del pseudo-elemento */
-    background: linear-gradient(rgba(255, 255, 255, 0), #FFF5E0);
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  min-height: 80%;
+}
+
+.login-description h1 {
+  font-size: 3.5rem; /* Ajusta el tamaño de fuente según tu preferencia */
+}
+
+.login-description::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%; /* Modifica la altura del pseudo-elemento */
+  background: linear-gradient(rgba(255, 255, 255, 0), #FFF5E0);
+}
 /* Estilos para las tarjetas de ejercicios */
 .blog-item {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+border: 1px solid #ddd;
+border-radius: 10px;
+overflow: hidden;
+transition: transform 0.3s ease;
 }
 
 .blog-item:hover {
-  transform: translateY(-5px);
+transform: translateY(-5px);
 }
 
 .blog-date {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
+position: absolute;
+top: 10px;
+left: 10px;
+background-color: rgba(0, 0, 0, 0.5);
+color: #fff;
+padding: 5px 10px;
+border-radius: 5px;
 }
 
 .blog-date h6 {
-  margin-bottom: -1px;
+margin-bottom: -1px;
 }
 
 .img-fluid {
-  width: 100%;
-  height: auto;
+width: 100%;
+height: auto;
 }
 
 .h5 {
-  font-size: 1.25rem;
+font-size: 1.25rem;
 }
 
 .p-4 {
-  padding: 1rem;
+padding: 1rem;
+}
+/*nav bar*/
+
+.navbar-nav .btn-primary {
+margin-right: 10px; /* Ajusta el espacio entre el botón y los otros elementos de la barra de navegación */
 }
 
-  
+/* */
+.service-item {
+border-radius: 10px;
+box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+transition: box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.service-item h4 {
+color: #333;
+}
+
+.service-item p {
+color: #666;
+}
+
+
+
