@@ -40,36 +40,51 @@ const Home = () => {
                 </div>
             </div>
             <div className="container-fluid py-5">
-            <div className="container pt-5 pb-3">
-                <div className="text-center mb-3 pb-3">
-                    <h6 className="text-primary text-uppercase" style={{ letterSpacing: '5px' }}>Services</h6>
-                    <h1>Servicios de NutriTec</h1>
+                <div className="container pt-5 pb-3">
+                    <div className="text-center mb-3 pb-3">
+                        <h6 className="text-primary text-uppercase" style={{ letterSpacing: '5px' }}>Services</h6>
+                        <h1>Servicios de NutriTec</h1>
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-4 col-md-6 mb-4">
+                            <div className="service-item bg-white text-center mb-2 py-5 px-4">
+                                <i className="fa fa-2x fa-route mx-auto mb-4"></i>
+                                <h4 className="mb-2">Ejercicios</h4>
+                                <p className="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 mb-4">
+                            <div className="service-item bg-white text-center mb-2 py-5 px-4">
+                                <i className="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
+                                <h4 className="mb-2">Comida</h4>
+                                <p className="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 mb-4">
+                            <div className="service-item bg-white text-center mb-2 py-5 px-4">
+                                <i className="fa fa-2x fa-hotel mx-auto mb-4"></i>
+                                <h4 className="mb-2">Nutri IA</h4>
+                                <p className="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <hr></hr>
+                <div className="card mb-5 text-center" style={{ maxWidth: '540px' }}>
                 <div className="row">
-                    <div className="col-lg-4 col-md-6 mb-4">
-                        <div className="service-item bg-white text-center mb-2 py-5 px-4">
-                            <i className="fa fa-2x fa-route mx-auto mb-4"></i>
-                            <h4 className="mb-2">Ejercicios</h4>
-                            <p className="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
-                        </div>
+                    <div className="col-md-4">
+                    <img src="/movil.jpg" className="img-fluid rounded-start" alt="..." />
                     </div>
-                    <div className="col-lg-4 col-md-6 mb-4">
-                        <div className="service-item bg-white text-center mb-2 py-5 px-4">
-                            <i className="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
-                            <h4 className="mb-2">Comida</h4>
-                            <p className="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
-                        </div>
+                    <div className="col-md-8 d-flex align-items-center">
+                    <div className="card-body mx-auto">
+                        <h3 className="card-title">Descarga nuestra App Movil !!!</h3>
+                        <p className="card-text">Ahora tambien nos puedes poder usar en nuestra app movil</p>
+                        <p className="card-text"><small className="text-body-secondary">Ya esta disponible !!!</small></p>
                     </div>
-                    <div className="col-lg-4 col-md-6 mb-4">
-                        <div className="service-item bg-white text-center mb-2 py-5 px-4">
-                            <i className="fa fa-2x fa-hotel mx-auto mb-4"></i>
-                            <h4 className="mb-2">Nutri IA</h4>
-                            <p className="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
-                        </div>
                     </div>
+                </div>
                 </div>
             </div>
-        </div>
         </div>
     )
 }

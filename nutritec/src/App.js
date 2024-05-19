@@ -6,6 +6,7 @@ import Home from './pages/home';
 import ViewEjercicio from './pages/ViewEjercicio';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ViewComida from './pages/ViewComida';
+import Usuario from './pages/usuario';
 
 const clientID = "562434628830-oth6ci1o114k7bfgstmqaq0ardicrk1l.apps.googleusercontent.com";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/viewEjercicio" element={<ViewEjercicio />} />
           <Route path="/viewComida" element={<ViewComida/>} />
+          <Route path="/usuario" element={<Usuario/>} />
         </Routes>
       </div>
     </Router>
