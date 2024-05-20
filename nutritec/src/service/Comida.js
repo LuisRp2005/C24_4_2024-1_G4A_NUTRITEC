@@ -10,4 +10,5 @@ export class Comida {
     }
 }
 
+
 export default Comida;
