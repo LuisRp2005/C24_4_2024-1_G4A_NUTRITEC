@@ -15,12 +15,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/viewEjercicio" element={<ViewEjercicio />} />
-<<<<<<< Updated upstream
           <Route path="/viewComida" element={<ViewComida/>} />
           <Route path="/usuario" element={<Usuario/>} />
-=======
-          <Route path="/viewComida" element={<ViewComida />} />
->>>>>>> Stashed changes
         </Routes>
       </div>
     </Router>
