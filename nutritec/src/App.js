@@ -6,6 +6,8 @@ import ViewEjercicio from './pages/ViewEjercicio';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ViewComida from './pages/ViewComida';
 import Usuario from './pages/usuario';
+import Formulario from './pages/formulario';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
           <Route path="/viewEjercicio" element={<ViewEjercicio />} />
           <Route path="/viewComida" element={<ViewComida/>} />
           <Route path="/usuario" element={<Usuario/>} />
+          <Route path="/Formulario" element={<Formulario />} />
         </Routes>
       </div>
     </Router>
