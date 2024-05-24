@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NavBar from '../components/Navbar';
 import '../pages/estiloIA.css';
 
@@ -38,7 +38,6 @@ function NutriIA() {
                         </div>
                    
                     </div>
-
                 </div>
             </div>
         </div>
