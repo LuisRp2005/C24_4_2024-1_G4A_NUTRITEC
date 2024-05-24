@@ -19,7 +19,7 @@ const NavBar = () => {
                         <a href="/home" className="nav-item nav-link active">Home</a>
                         <a href="/ViewEjercicio" className="nav-item nav-link">Ejercicios</a>
                         <a href="/viewComida" className="nav-item nav-link">Comida</a>
-                        <a href="#" className="nav-item nav-link">NutrIA</a>
+                        <a href="/NutriIA" className="nav-item nav-link">NutrIA</a>
                         <div className="nav-item dropdown">
                             <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div className="dropdown-menu text-capitalize">
