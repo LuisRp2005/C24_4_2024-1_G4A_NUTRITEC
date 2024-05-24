@@ -1,7 +1,9 @@
 import React from 'react';
 import '../pages/styles.css';
-import { GoogleOAuthProvider } from '@react-oauth/google'; // Asegúrate de que esta importación es correcta
-import LoginButton from "../components/LoginButton";
+
+const handleLoginWithGoogle = () => {
+  window.location.href = "http://localhost:8080/oauth2/authorization/google";
+}
 
 const Login = () => {
   return (
@@ -35,12 +37,7 @@ const Login = () => {
               <div className='text-center mt-4'>
                 <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
                 <p className='mt-3'>O también:</p>
-
-                <GoogleOAuthProvider clientId="562434628830-oth6ci1o114k7bfgstmqaq0ardicrk1l.apps.googleusercontent.com">
-                  <div className="App">
-                    <LoginButton />
-                  </div>
-                </GoogleOAuthProvider>
+                <button type="button" onClick={handleLoginWithGoogle} className="btn btn-danger">Iniciar Sesión con Google</button>
               </div>
             </form>
           </div>

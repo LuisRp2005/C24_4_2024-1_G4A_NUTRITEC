@@ -1,31 +1,24 @@
 import React from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
-import { useNavigate } from 'react-router-dom';
 
 const LoginButton = () => {
-  const navigate = useNavigate();
-
   const login = useGoogleLogin({
     onSuccess: async tokenResponse => {
-      const response = await fetch('http://localhost:8080/login/oauth2/code/google', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ token: tokenResponse.access_token })
-      });
+      try {
+        const response = await fetch('http://localhost:8080/oauth2/authorization/google', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${tokenResponse.access_token}`
+          }
+        });
+        const data = await response.json();
+        console.log('Login success:', data);
 
-      const sessionCookie = response.headers.get('Set-Cookie');
-      console.log('Session Cookie:', sessionCookie);
-
-      if (response.ok) {
-        // Redirigir al usuario a la página de inicio en el frontend
-        navigate('/home');
-      } else {
-        console.error('Error during login:', await response.text());
+      } catch (error) {
+        console.error('Login failed:', error);
       }
-    },
-    onError: error => console.error('Login Failed:', error)
+    }
   });
 
   return (
@@ -36,4 +29,3 @@ const LoginButton = () => {
 };
 
 export default LoginButton;
-
