@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  background-color: #202020;
+  color: white;
+}
+
+input, select {
+  color: rgb(255, 255, 255);
+}
