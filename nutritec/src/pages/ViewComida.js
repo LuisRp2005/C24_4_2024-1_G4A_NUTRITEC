@@ -48,7 +48,7 @@ class ViewComida extends Component {
                                 <div key={comida.idComida} className="col-lg-4 col-md-6 mb-4 pb-2">
                                     <div className="blog-item">
                                         <div className="position-relative">
-                                            <img className="img-fluid w-100" src="/img_referencial2.jpg" alt="" />
+                                            <img className="img-fluid w-100" src="/img_comida.jpg" alt="" />
                                             <div className="blog-date">
                                                 <h6 className="font-weight-bold mb-n1">Nro</h6>
                                                 <h6 className="font-weight-bold mb-n1">{comida.idComida}</h6>

@@ -1,8 +1,9 @@
 import React from 'react';
 import '../pages/styles.css';
 
-const handleLoginWithGoogle = () => {
+const LoginGoogle = () => {
   window.location.href = "http://localhost:8080/oauth2/authorization/google";
+  
 }
 
 const Login = () => {
@@ -37,7 +38,7 @@ const Login = () => {
               <div className='text-center mt-4'>
                 <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
                 <p className='mt-3'>O también:</p>
-                <button type="button" onClick={handleLoginWithGoogle} className="btn btn-danger">Iniciar Sesión con Google</button>
+                <button type="button" onClick={LoginGoogle} className="btn btn-danger">Iniciar Sesión con Google</button>
               </div>
             </form>
           </div>
