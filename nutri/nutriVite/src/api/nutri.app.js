@@ -7,3 +7,4 @@ export const getAll=(id)=>nutriusiario.get(`/${id}/`);
 export const createNutri=(nutri)=>nutriusiario.post("/",nutri);
 export const deleteNutri = (id) => nutriusiario.delete(`/${id}`);
 export const updateNutri = (id,nutri) => nutriusiario.put(`/${id}/`,nutri);
+
