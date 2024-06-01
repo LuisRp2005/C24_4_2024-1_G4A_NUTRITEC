@@ -33,6 +33,7 @@ class Ejercicio(models.Model):
     descripcion_ejercicio = models.CharField(max_length=45, null=True)
     nivel_dificultad = models.CharField(max_length=45, null=True)
     tipo_imc = models.ForeignKey(TipoIMC, on_delete=models.CASCADE)
+    images = models.ImageField(upload_to="nutri/",null=True,blank=True)
 
     def __str__(self):
         return self.nombre_ejercicio
@@ -59,6 +60,7 @@ class CategoriaComida(models.Model):
 class Comida(models.Model):
     categoria = models.ForeignKey(CategoriaComida, on_delete=models.CASCADE)
     nombre_comida = models.CharField(max_length=45, null=True)
+    images = models.ImageField(upload_to="nutri/",null=True,blank=True)
     calorias = models.IntegerField(null=True)
 
     def __str__(self):
