@@ -1,46 +1,46 @@
+// NutriIA.js
 import React from 'react';
 import NavBar from '../components/Navbar';
 import '../pages/estiloIA.css';
 
 function NutriIA() {
     return (
-        <div>
+        <div className='nutri-ia-container'>
             <NavBar />
-            <div className='App'>
-                <div className='sideBar'>
-                    <div className='upperSide'>
-                        <div className='upperSideTop'><img src='/img_nutricion.png' alt='Logo' className='logo'/><span className='brand'> NutriIA</span></div>
-                        <button className='midBtn'><img src='/suma.png' className='addBtn'/>New Chat</button>
-                        <div className='upperSideBottom'>
-                            <button className='query'><img className='' alt='Query'/>What is programing</button>
-                            <button className='query'><img className='' alt='Query'/>What is programing</button>
-
-                        </div>
+            <div className='chat-container'>
+                <div className='sidebar'>
+                    <div className='sidebar-header col' style={{ textAlign: 'center' }}>
+                        <span className='brand mt-2 mb-4'>NutriIA</span>
                     </div>
-                    <div className='loweSide'>
-                        <div className='listItems'><img src='/home.png' alt='Home' className='listItemsImg'/>Home</div>
-                        <div className='listItems'><img src='/guardar.png' alt='Saved' className='listItemsImg'/>Saved</div>
-                        <div className='listItems'><img src='/rocket.png' alt='Upgrade' className='listItemsImg'/>Upgrade to Pro</div>
+
+                    <button className='new-chat-btn'><img src='/suma.png' className='addBtn' alt='New Chat' /> New Chat</button>
+                    <div className='query-list mb-4'>
+                        <button className='query'><img className='query-icon' alt='Query' src='/query_icon.png' />What is programming</button>
+                        <button className='query'><img className='query-icon' alt='Query' src='/query_icon.png' />How to lose weight</button>
+                    </div>
+                    <div className='sidebar-footer mt-4'>
+                        <div className='sidebar-item'><img src='/home.png' alt='Home' className='sidebar-icon' /><span>Home</span></div>
+                        <div className='sidebar-item'><img src='/guardar.png' alt='Saved' className='sidebar-icon' /><span>Saved</span></div>
+                        <div className='sidebar-item'><img src='/rocket.png' alt='Upgrade' className='sidebar-icon' /><span>Upgrade to Pro</span></div>
                     </div>
                 </div>
                 <div className='main'>
                     <div className='chats'>
-                        <div className='chat'>
-                            <img src='' alt='' className='chatImg'></img><p className='txt'>asdsahsdsaklodhsalkdhklsadhklsahlkdsahlkdhlahdklsahdlksahlkdsahlksadlkhads</p>
+                        <div className='chat user'>
+                            <p className='txt'>Hello!</p>
                         </div>
                         <div className='chat bot'>
-                            <img src='' alt='' className='chatImg'></img><p className='txt'>asdsadasdsasdhnlkashdlkashkjdhksadhkjkhhksadhdkjsahdksajhdsakjkjhsadsahkldsahlkdhskalhdlksahlkdsahlksadhkldhlksahsalklhdsalkasdjkasdhjksahks</p>
+                            <p className='txt'>Hi there! How can I assist you today?</p>
                         </div>
                     </div>
-                    <div className='chatFooter'>
-                        <div className='inp'>
-                            <input type='text' placeholder='Send a Message'/><button className='send'><img src='/enviar.png' alt='Send'></img></button>
-                        </div>
-                   
+                    <div className='chat-footer'>
+                        <input type='text' placeholder='Send a Message' className='chat-input' />
+                        <button className='send-btn'><img src='/enviar.png' alt='Send' className='send-icon' /></button>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
+
 export default NutriIA;
