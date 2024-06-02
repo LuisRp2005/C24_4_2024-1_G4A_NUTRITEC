@@ -1,0 +1,74 @@
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #283048, #859398);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.option-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.option-title {
+    font-weight: bold;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.option-description {
+    color: #666;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.option-button button {
+    background: linear-gradient(135deg, #0099ff, #0066ff);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.option-button button:hover {
+    background: linear-gradient(135deg, #0066ff, #0033cc);
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px) {
+    .options-container {
+        padding: 10px;
+    }
+
+    .option-card {
+        padding: 20px;
+    }
+
+    .option-title {
+        font-size: 24px;
+    }
+
+    .option-button button {
+        padding: 10px 20px;
+    }
+}

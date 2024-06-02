@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'coreapi',
     'rest_framework',
     'nutritec',
+    'nut'
 
 ]
 

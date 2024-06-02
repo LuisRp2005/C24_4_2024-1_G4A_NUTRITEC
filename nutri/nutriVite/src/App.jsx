@@ -27,9 +27,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/nutritec" />} />
           <Route path="/nutritec" element={<NutriPage />} />
-          <Route path="/nutritec-create" element={<Nutri2Page />} />
-          <Route path="/nutritec/:id" element={<Nutri2Page />} />
-          <Route path="/tipoimc" element={<TipoIMCListPage />} />
+          <Route path="/nutritec-create" element={<Nutri2Page/>} />
+          <Route path="/nutritec/:id" element={<Nutri2Page/>} />
+          <Route path="/tipoimc" element={<TipoIMCListPage/>} />
           <Route path="/tipoimc-create" element={<TipoIMCFormPage />} />
           <Route path="/tipoimc/:id" element={<TipoIMCFormPage />} />
           <Route path="/ejercicio" element={<EjercicioListPage />} />
