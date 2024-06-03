@@ -12,7 +12,7 @@ export function Navigations() {
                     </div>
                     <div className="option-button">
                         <button>
-                            <Link to="/nutritec-create">Crear nuevo usuario</Link>
+                            <Link to="/nutritec-create">Crear nuevo Usuario</Link>
                         </button>
                     </div>
                 </div>
@@ -93,6 +93,11 @@ export function Navigations() {
                 <div className="option-card">
                     <div className="option-title">
                         <Link to="/categoriaComida" className="font-bold text-xl mb-2">Categoría de Comida</Link>
+                    </div>
+                    <div className="option-button">
+                        <button>
+                            <Link to="#">Crear nuevo Categoria de comida</Link>
+                        </button>
                     </div>
                 </div>
             </div>

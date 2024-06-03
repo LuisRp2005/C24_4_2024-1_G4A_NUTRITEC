@@ -45,6 +45,7 @@ export function TipoIMCFormPage() {
 
     return (
         <div className='max-w-xl mx-auto'>
+            <h1 className="text-3xl font-bold text-center  p-5">AGREGAR NUEVO TIPO DE IMC</h1>
             <Toaster />
             <form onSubmit={onSubmit} className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                 <div>

@@ -18,15 +18,21 @@ class Usuario(models.Model):
             self.imc = self.peso / (self.altura * self.altura)
         super().save(*args, **kwargs)
 
-    def __str__(self):
+    def _str_(self):
         return f'{self.nombre} {self.apellido}'
+
+    class Meta:
+        db_table = 'nut_usuario'
 
 class TipoIMC(models.Model):
     tipo_imc = models.CharField(max_length=45, null=True)
     descripcion_imc = models.CharField(max_length=45, null=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.tipo_imc
+
+    class Meta:
+        db_table = 'nut_tipo_imc'
 
 class Ejercicio(models.Model):
     nombre_ejercicio = models.CharField(max_length=45, null=True)
@@ -35,8 +41,11 @@ class Ejercicio(models.Model):
     tipo_imc = models.ForeignKey(TipoIMC, on_delete=models.CASCADE)
     images = models.ImageField(upload_to="nutri/",null=True,blank=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.nombre_ejercicio
+
+    class Meta:
+        db_table = 'nut_ejercicio'
 
 class AsignacionEjercicio(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
@@ -48,14 +57,20 @@ class AsignacionEjercicio(models.Model):
             self.fecha_hora_asignacion = timezone.now()
         super().save(*args, **kwargs)
 
-    def __str__(self):
+    def _str_(self):
         return f'{self.usuario} - {self.ejercicio}'
+
+    class Meta:
+        db_table = 'nut_asignacion_ejercicio'
 
 class CategoriaComida(models.Model):
     nombre_categoria = models.CharField(max_length=45, null=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.nombre_categoria
+
+    class Meta:
+        db_table = 'nut_categoria_comida'
 
 class Comida(models.Model):
     categoria = models.ForeignKey(CategoriaComida, on_delete=models.CASCADE)
@@ -63,8 +78,11 @@ class Comida(models.Model):
     images = models.ImageField(upload_to="nutri/",null=True,blank=True)
     calorias = models.IntegerField(null=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.nombre_comida
+
+    class Meta:
+        db_table = 'nut_comida'
 
 class AsignacionComida(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
@@ -76,8 +94,11 @@ class AsignacionComida(models.Model):
             self.fecha_hora_registro = timezone.now()
         super().save(*args, **kwargs)
 
-    def __str__(self):
+    def _str_(self):
         return f'{self.usuario} - {self.comida}'
+
+    class Meta:
+        db_table = 'nut_asignacion_comida'
 
 class RegistroIMC(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
@@ -89,5 +110,8 @@ class RegistroIMC(models.Model):
             self.fecha_hora_registro = timezone.now()
         super().save(*args, **kwargs)
 
-    def __str__(self):
+    def _str_(self):
         return f'{self.usuario} - {self.tipo_imc} ({self.fecha_hora_registro})'
+
+    class Meta:
+        db_table = 'nut_registro_imc'

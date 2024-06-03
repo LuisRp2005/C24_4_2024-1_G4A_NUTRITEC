@@ -6,13 +6,15 @@ export function EjercicioCard({ ejercicio }) {
     const navigate = useNavigate();
 
     return (
-        <div className='bg-zinc-800 p-3 hover:bg-zinc-700 hover:cursor-pointer' 
+        <div className=' mt-6 bg-white p-4 rounded-lg shadow-md hover:shadow-lg border border-gray-200'
          onClick={() => navigate(`/ejercicio/${ejercicio.id}`)}>
-            <h1>{ejercicio.nombre_ejercicio}</h1>
-            <p>{ejercicio.descripcion_ejercicio}</p>
-            <p>Dificultad: {ejercicio.nivel_dificultad}</p>
-            <p>Tipo IMC: {ejercicio.tipo_imc}</p>
-            {ejercicio.images && <img src={ejercicio.images} alt="Ejercicio" />}
+            <div className="grid grid-cols-2 gap-4">
+                <p className="text-sm text-gray-600"><strong>Nombre de Ejercicio:</strong> {ejercicio.nombre_ejercicio}</p>
+                <p className="text-sm text-gray-600"><strong>Descripcion:</strong> {ejercicio.descripcion_ejercicio}</p>
+                <p className="text-sm text-gray-600"><strong>Nivel de dificultad:</strong> {ejercicio.nivel_dificultad}</p>
+                <p className="text-sm text-gray-600"><strong>Tipo de IMC:</strong> {ejercicio.tipo_imc}</p>
+                <img src={ejercicio.images.url} alt="Ejercicio"/>
+            </div>
         </div>
     );
 }
