@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { NutriPage } from './pages/nutri1';
 import { Nutri2Page } from './pages/nutriU';
 import { TipoIMCListPage } from './pages/TipoIMCListPage';
@@ -23,13 +23,12 @@ function App() {
   return (
     <BrowserRouter>
       <div className="container mx-auto">
-        <Navigations />
         <Routes>
-          <Route path="/" element={<Navigate to="/nutritec" />} />
+          <Route path="/" element={<Navigations/>} />
           <Route path="/nutritec" element={<NutriPage />} />
-          <Route path="/nutritec-create" element={<Nutri2Page />} />
-          <Route path="/nutritec/:id" element={<Nutri2Page />} />
-          <Route path="/tipoimc" element={<TipoIMCListPage />} />
+          <Route path="/nutritec-create" element={<Nutri2Page/>} />
+          <Route path="/nutritec/:id" element={<Nutri2Page/>} />
+          <Route path="/tipoimc" element={<TipoIMCListPage/>} />
           <Route path="/tipoimc-create" element={<TipoIMCFormPage />} />
           <Route path="/tipoimc/:id" element={<TipoIMCFormPage />} />
           <Route path="/ejercicio" element={<EjercicioListPage />} />
