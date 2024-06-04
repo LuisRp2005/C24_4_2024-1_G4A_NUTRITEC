@@ -57,7 +57,8 @@ export function EjercicioFormPage() {
 
     return (
         <div className="max-w-xl mx-auto">
-            <form onSubmit={handleSubmit} className="bg-zinc-800 p-10">
+            <h1 className="text-3xl font-bold text-center p-5">AGREGA UN NUEVO EJERCICIO</h1>
+            <form onSubmit={handleSubmit} className="bg-zinc-800 p-10" enctype="multipart/form-data">
                 <label className="block text-sm font-bold mb-2">Nombre del Ejercicio:</label>
                 <input 
                     type="text" 

@@ -1,27 +1,40 @@
-// NutriIA.js
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import NavBar from '../components/Navbar';
 import '../pages/estiloIA.css';
 
 function NutriIA() {
+    const [message, setMessage] = useState("");
+    const [chat, setChat] = useState([]);
+
+    const sendMessage = async () => {
+        try {
+            const response = await axios.post('http://localhost:8080/api/chat/send', { message });
+            const botMessage = response.data.choices[0].text.trim();
+            setChat([...chat, { sender: 'user', text: message }, { sender: 'bot', text: botMessage }]);
+            setMessage("");
+        } catch (error) {
+            console.error("Error sending message", error);
+        }
+    };
+
     return (
         <div className='nutri-ia-container'>
             <NavBar />
-            <div className='chat-container'>
-                <div className='sidebar'>
-                    <div className='sidebar-header col' style={{ textAlign: 'center' }}>
-                        <span className='brand mt-2 mb-4'>NutriIA</span>
+            <div className='App'>
+                <div className='sideBar'>
+                    <div className='upperSide'>
+                        <div className='upperSideTop'><img src='/img_nutricion.png' alt='Logo' className='logo'/><span className='brand'> NutriIA</span></div>
+                        <button className='midBtn'><img src='/suma.png' className='addBtn'/>New Chat</button>
+                        <div className='upperSideBottom'>
+                            <button className='query'><img className='' alt='Query'/>What is programming</button>
+                            <button className='query'><img className='' alt='Query'/>What is programming</button>
+                        </div>
                     </div>
-
-                    <button className='new-chat-btn'><img src='/suma.png' className='addBtn' alt='New Chat' /> New Chat</button>
-                    <div className='query-list mb-4'>
-                        <button className='query'><img className='query-icon' alt='Query' src='/query_icon.png' />What is programming</button>
-                        <button className='query'><img className='query-icon' alt='Query' src='/query_icon.png' />How to lose weight</button>
-                    </div>
-                    <div className='sidebar-footer mt-4'>
-                        <div className='sidebar-item'><img src='/home.png' alt='Home' className='sidebar-icon' /><span>Home</span></div>
-                        <div className='sidebar-item'><img src='/guardar.png' alt='Saved' className='sidebar-icon' /><span>Saved</span></div>
-                        <div className='sidebar-item'><img src='/rocket.png' alt='Upgrade' className='sidebar-icon' /><span>Upgrade to Pro</span></div>
+                    <div className='lowerSide'>
+                        <div className='listItems'><img src='/home.png' alt='Home' className='listItemsImg'/>Home</div>
+                        <div className='listItems'><img src='/guardar.png' alt='Saved' className='listItemsImg'/>Saved</div>
+                        <div className='listItems'><img src='/rocket.png' alt='Upgrade' className='listItemsImg'/>Upgrade to Pro</div>
                     </div>
                 </div>
                 <div className='main'>

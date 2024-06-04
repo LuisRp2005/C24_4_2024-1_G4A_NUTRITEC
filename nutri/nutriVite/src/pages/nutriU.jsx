@@ -51,6 +51,8 @@ export function Nutri2Page() {
 
     return (
         <div className='max-w-xl mx-auto'>
+            <h1 className="text-3xl font-bold text-center mb-5 p-5">USUARIO</h1>
+
             <Toaster />
             <form onSubmit={onSubmit} className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                 <div>
@@ -94,8 +96,8 @@ export function Nutri2Page() {
                     <label htmlFor="genero" className='block'>Género</label>
                     <select id="genero" {...register("genero", { required: true })} 
                         className='w-full bg-zinc-700 p-3 rounded-lg mb-3'>
-                        <option value="M">Varon </option>
-                        <option value="F">Mujer</option>
+                        <option value="M">Masculino </option>
+                        <option value="F">Femenino</option>
                     </select>
                 </div>
                 <div className='col-span-2'>

@@ -10,35 +10,45 @@ export function AsignacionComidaFormPage() {
     const params = useParams();
 
     const onSubmit = handleSubmit(async data => {
-        if (params.id) {
-            await updateAsignacionComida(params.id, data);
-            toast.success('Asignación de comida actualizada correctamente', {
-                position: "top-center",
-                style: {
-                    background: "#101010",
-                    color: "#fff"
-                }
-            });
-        } else {
-            await createAsignacionComida(data);
-            toast.success('Asignación de comida agregada correctamente', {
-                position: "top-center",
-                style: {
-                    background: "#101010",
-                    color: "#fff"
-                }
-            });
+        try {
+            if (params.id) {
+                await updateAsignacionComida(params.id, data);
+                toast.success('Asignación de comida actualizada correctamente', {
+                    position: "top-center",
+                    style: {
+                        background: "#101010",
+                        color: "#fff"
+                    }
+                });
+            } else {
+                await createAsignacionComida(data);
+                toast.success('Asignación de comida agregada correctamente', {
+                    position: "top-center",
+                    style: {
+                        background: "#101010",
+                        color: "#fff"
+                    }
+                });
+            }
+            navigate("/asignacionComida");
+        } catch (error) {
+            console.error("Error:", error);
+            // Manejo del error, por ejemplo, mostrar un mensaje de error al usuario
         }
-        navigate("/asignacionComida");
     });
 
     useEffect(() => {
         async function loadAsignacionComida() {
             if (params.id) {
-                const res = await getAsignacionComida(params.id);
-                setValue("usuario", res.data.usuario);
-                setValue("comida", res.data.comida);
-                setValue("fecha_hora_asignacion", new Date(res.data.fecha_hora_asignacion).toISOString().substring(0, 16));
+                try {
+                    const res = await getAsignacionComida(params.id);
+                    setValue("usuario", res.data.usuario);
+                    setValue("comida", res.data.comida);
+                    setValue("fecha_hora_asignacion", new Date(res.data.fecha_hora_asignacion).toISOString().substring(0, 16));
+                } catch (error) {
+                    console.error("Error:", error);
+                    // Manejo del error, por ejemplo, mostrar un mensaje de error al usuario
+                }
             }
         }
         loadAsignacionComida();
@@ -57,7 +67,7 @@ export function AsignacionComidaFormPage() {
                 </div>
                 <div>
                     <label htmlFor="comida" className='block'>Comida</label>
-                    <input type="text" id="comida" placeholder="Comida" {...register("comida", { required: true })} 
+                    <input type="text" id="comida" placeholder="Comida" {...register("comida", { required: true })}
                         className='w-full bg-zinc-700 p-3 rounded-lg mb-3' />
                 </div>
                 <div>
@@ -75,15 +85,20 @@ export function AsignacionComidaFormPage() {
                     <button className='bg-red-500 p-3 rounded-lg' onClick={async () => {
                         const accepted = window.confirm("¿Estás seguro?");
                         if (accepted) {
-                            await deleteAsignacionComida(params.id);
-                            toast.success('Asignación de comida eliminada correctamente', {
-                                position: "top-center",
-                                style: {
-                                    background: "#101010",
-                                    color: "#fff"
-                                }
-                            });
-                            navigate("/asignacionComida");
+                            try {
+                                await deleteAsignacionComida(params.id);
+                                toast.success('Asignación de comida eliminada correctamente', {
+                                    position: "top-center",
+                                    style: {
+                                        background: "#101010",
+                                        color: "#fff"
+                                    }
+                                });
+                                navigate("/asignacionComida");
+                            } catch (error) {
+                                console.error("Error:", error);
+                                // Manejo del error, por ejemplo, mostrar un mensaje de error al usuario
+                            }
                         }
                     }}>
                         Eliminar

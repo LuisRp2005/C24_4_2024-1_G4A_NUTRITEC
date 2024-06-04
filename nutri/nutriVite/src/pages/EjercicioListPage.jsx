@@ -15,10 +15,14 @@ export function EjercicioListPage() {
     }, []);
 
     return (
+        <div>
+        <h1 className="text-3xl font-bold text-center  p-5">LISTADO DE EJERCICIOS</h1>
         <div className="grid grid-cols-2 gap-2">
+            
             {ejercicios.map(e => (
                 <EjercicioCard key={e.id} ejercicio={e} />
             ))}
+        </div>
         </div>
     );
 }

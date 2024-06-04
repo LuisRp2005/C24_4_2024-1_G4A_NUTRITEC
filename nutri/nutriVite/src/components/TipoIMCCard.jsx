@@ -4,10 +4,12 @@ export function TipoIMCCard({ tipoIMC }) {
     const navigate = useNavigate();
 
     return (
-        <div className='bg-zinc-800 p-3 hover:bg-zinc-700 hover:cursor-pointer' 
+        <div className=' mt-6 bg-white p-4 rounded-lg shadow-md hover:shadow-lg border border-gray-200'
          onClick={() => navigate(`/tipoimc/${tipoIMC.id}`)}>
-            <h1>{tipoIMC.tipo_imc}</h1>
-            <p>{tipoIMC.descripcion_imc}</p>
+            <div className="grid grid-cols-2 gap-4">
+            <p className="text-sm text-gray-600"><strong>Tipo:</strong> {tipoIMC.tipo_imc}</p>
+            <p className="text-sm text-gray-600"><strong>Descripcion:</strong> {tipoIMC.descripcion_imc}</p>
+            </div>
         </div>
     );
 }

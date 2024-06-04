@@ -20,4 +20,5 @@ export function NutriList() {
             ))}
         </div>
     );
+
 }

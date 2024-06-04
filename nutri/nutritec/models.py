@@ -18,7 +18,7 @@ class Usuario(models.Model):
             self.imc = self.peso / (self.altura * self.altura)
         super().save(*args, **kwargs)
 
-    def __str__(self):
+    def _str_(self):
         return f'{self.nombre} {self.apellido}'
 
     class Meta:
@@ -28,7 +28,7 @@ class TipoIMC(models.Model):
     tipo_imc = models.CharField(max_length=45, null=True)
     descripcion_imc = models.CharField(max_length=45, null=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.tipo_imc
 
     class Meta:
@@ -41,7 +41,7 @@ class Ejercicio(models.Model):
     tipo_imc = models.ForeignKey(TipoIMC, on_delete=models.CASCADE)
     images = models.ImageField(upload_to="nutri/",null=True,blank=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.nombre_ejercicio
 
     class Meta:
@@ -57,7 +57,7 @@ class AsignacionEjercicio(models.Model):
             self.fecha_hora_asignacion = timezone.now()
         super().save(*args, **kwargs)
 
-    def __str__(self):
+    def _str_(self):
         return f'{self.usuario} - {self.ejercicio}'
 
     class Meta:
@@ -66,7 +66,7 @@ class AsignacionEjercicio(models.Model):
 class CategoriaComida(models.Model):
     nombre_categoria = models.CharField(max_length=45, null=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.nombre_categoria
 
     class Meta:
@@ -78,7 +78,7 @@ class Comida(models.Model):
     images = models.ImageField(upload_to="nutri/",null=True,blank=True)
     calorias = models.IntegerField(null=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.nombre_comida
 
     class Meta:
@@ -94,7 +94,7 @@ class AsignacionComida(models.Model):
             self.fecha_hora_registro = timezone.now()
         super().save(*args, **kwargs)
 
-    def __str__(self):
+    def _str_(self):
         return f'{self.usuario} - {self.comida}'
 
     class Meta:
@@ -110,8 +110,12 @@ class RegistroIMC(models.Model):
             self.fecha_hora_registro = timezone.now()
         super().save(*args, **kwargs)
 
-    def __str__(self):
+    def _str_(self):
         return f'{self.usuario} - {self.tipo_imc} ({self.fecha_hora_registro})'
 
     class Meta:
+<<<<<<< HEAD
         db_table = 'nut_registro_imc'
+=======
+        db_table = 'nut_registro_imc'
+>>>>>>> dc875ffbacdd39e254e126d5b76aa7585d276969
