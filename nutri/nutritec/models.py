@@ -21,12 +21,18 @@ class Usuario(models.Model):
     def __str__(self):
         return f'{self.nombre} {self.apellido}'
 
+    class Meta:
+        db_table = 'nut_usuario'
+
 class TipoIMC(models.Model):
     tipo_imc = models.CharField(max_length=45, null=True)
     descripcion_imc = models.CharField(max_length=45, null=True)
 
     def __str__(self):
         return self.tipo_imc
+
+    class Meta:
+        db_table = 'nut_tipo_imc'
 
 class Ejercicio(models.Model):
     nombre_ejercicio = models.CharField(max_length=45, null=True)
@@ -37,6 +43,9 @@ class Ejercicio(models.Model):
 
     def __str__(self):
         return self.nombre_ejercicio
+
+    class Meta:
+        db_table = 'nut_ejercicio'
 
 class AsignacionEjercicio(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
@@ -51,11 +60,17 @@ class AsignacionEjercicio(models.Model):
     def __str__(self):
         return f'{self.usuario} - {self.ejercicio}'
 
+    class Meta:
+        db_table = 'nut_asignacion_ejercicio'
+
 class CategoriaComida(models.Model):
     nombre_categoria = models.CharField(max_length=45, null=True)
 
     def __str__(self):
         return self.nombre_categoria
+
+    class Meta:
+        db_table = 'nut_categoria_comida'
 
 class Comida(models.Model):
     categoria = models.ForeignKey(CategoriaComida, on_delete=models.CASCADE)
@@ -65,6 +80,9 @@ class Comida(models.Model):
 
     def __str__(self):
         return self.nombre_comida
+
+    class Meta:
+        db_table = 'nut_comida'
 
 class AsignacionComida(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
@@ -79,6 +97,9 @@ class AsignacionComida(models.Model):
     def __str__(self):
         return f'{self.usuario} - {self.comida}'
 
+    class Meta:
+        db_table = 'nut_asignacion_comida'
+
 class RegistroIMC(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     tipo_imc = models.ForeignKey(TipoIMC, on_delete=models.CASCADE)
@@ -91,3 +112,6 @@ class RegistroIMC(models.Model):
 
     def __str__(self):
         return f'{self.usuario} - {self.tipo_imc} ({self.fecha_hora_registro})'
+
+    class Meta:
+        db_table = 'nut_registro_imc'
