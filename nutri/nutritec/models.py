@@ -114,8 +114,4 @@ class RegistroIMC(models.Model):
         return f'{self.usuario} - {self.tipo_imc} ({self.fecha_hora_registro})'
 
     class Meta:
-<<<<<<< HEAD
         db_table = 'nut_registro_imc'
-=======
-        db_table = 'nut_registro_imc'
->>>>>>> dc875ffbacdd39e254e126d5b76aa7585d276969
