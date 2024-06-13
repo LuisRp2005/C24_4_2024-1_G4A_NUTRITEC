@@ -115,3 +115,4 @@ class RegistroIMC(models.Model):
 
     class Meta:
         db_table = 'nut_registro_imc'
+
