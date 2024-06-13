@@ -10,7 +10,11 @@ function NutriIA() {
     const sendMessage = async () => {
         try {
             const response = await axios.post('http://localhost:8080/api/chat/send', { message });
-            const botMessage = response.data.choices[0].text.trim();
+            console.log(response.data);
+            
+            // Verificar y extraer el mensaje de respuesta correctamente
+            const botMessage = response.data.choices[0].message.content.trim() || "No response";
+
             setChat([...chat, { sender: 'user', text: message }, { sender: 'bot', text: botMessage }]);
             setMessage("");
         } catch (error) {
