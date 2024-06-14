@@ -6,7 +6,7 @@ export function EjercicioCard({ ejercicio }) {
 
     return (
         <div className=' mt-6 bg-white p-4 rounded-lg shadow-md hover:shadow-lg border border-gray-200'
-             onClick={() => navigate(`/ejercicio/${ejercicio.id}`)}>
+             onClick={() => navigate(`/ejercicio/${ejercicio.id_ejercicio}`)}>
             <div className="grid grid-cols-2 gap-4">
                 <p className="text-sm text-gray-600"><strong>Nombre de Ejercicio:</strong> {ejercicio.nombre_ejercicio}</p>
                 <p className="text-sm text-gray-600"><strong>Descripcion:</strong> {ejercicio.descripcion_ejercicio}</p>

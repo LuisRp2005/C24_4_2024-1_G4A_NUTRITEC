@@ -20,7 +20,7 @@ export function EjercicioListPage() {
         <div className="grid grid-cols-2 gap-2">
             
             {ejercicios.map(e => (
-                <EjercicioCard key={e.id} ejercicio={e} />
+                <EjercicioCard key={e.id_ejercicio} ejercicio={e} />
             ))}
         </div>
         </div>

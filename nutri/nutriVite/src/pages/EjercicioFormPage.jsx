@@ -1,4 +1,3 @@
-// src/pages/EjercicioFormPage.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getEjercicio, createEjercicio, updateEjercicio } from "../api/ejercicio";
@@ -44,7 +43,7 @@ export function EjercicioFormPage() {
         if (image) {
             formData.append('images', image);
         }
-
+    
         if (id) {
             await updateEjercicio(id, formData);
             toast.success("Ejercicio actualizado");

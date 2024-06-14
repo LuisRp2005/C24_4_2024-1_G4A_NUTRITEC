@@ -19,7 +19,7 @@ export function NutriCard({ nutri }) {
                         <p className="text-sm text-gray-600"><strong>Género:</strong> {nutri.genero}</p>
                     </div>
                 </div>
-                <button onClick={() => navigate(`/nutritec/${nutri.id}`)} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                <button onClick={() => navigate(`/nutritec/${nutri.id_usuario}`)} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Ver perfil
                 </button>
             </div>

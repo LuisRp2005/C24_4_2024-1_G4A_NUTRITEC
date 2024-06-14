@@ -10,26 +10,47 @@ export function Nutri2Page() {
     const params = useParams();
 
     const onSubmit = handleSubmit(async data => {
-        if (params.id) {
-            await updateNutri(params.id, data)
-            toast.success('Usuario actualizado correctamente', {
-                position: "top-center",
-                style: {
-                    background: "#101010",
-                    color: "#fff"
-                }
-            });
-        } else {
-            await createNutri(data);
-            toast.success('Usuario agregado correctamente', {
-                position: "top-center",
-                style: {
-                    background: "#101010",
-                    color: "#fff"
-                }
-            });
+        try {
+            if (params.id) {
+                await updateNutri(params.id, data);
+                toast.success('Usuario actualizado correctamente', {
+                    position: "top-center",
+                    style: {
+                        background: "#101010",
+                        color: "#fff"
+                    }
+                });
+            } else {
+                await createNutri(data);
+                toast.success('Usuario agregado correctamente', {
+                    position: "top-center",
+                    style: {
+                        background: "#101010",
+                        color: "#fff"
+                    }
+                });
+            }
+            navigate("/nutritec");
+        } catch (error) {
+            console.error('Error:', error);
+            if (error.response) {
+                toast.error(`Error: ${error.response.data}`, {
+                    position: "top-center",
+                    style: {
+                        background: "#101010",
+                        color: "#fff"
+                    }
+                });
+            } else {
+                toast.error('Error al procesar la solicitud', {
+                    position: "top-center",
+                    style: {
+                        background: "#101010",
+                        color: "#fff"
+                    }
+                });
+            }
         }
-        navigate("/nutritec");
     });
 
     useEffect(() => {
@@ -88,6 +109,12 @@ export function Nutri2Page() {
                         className='w-full bg-zinc-700 p-3 rounded-lg mb-3'/>
                 </div>
                 <div>
+                    <label htmlFor="contraseña" className='block'>Contraseña</label>
+                    <input type="password" id="contraseña" placeholder="Contraseña" {...register("contraseña", { required: true })} 
+                        className='w-full bg-zinc-700 p-3 rounded-lg mb-3' />
+                    {errors.contraseña && <span>Este campo es requerido</span>}
+                </div>
+                <div>
                     <label htmlFor="fecha_nacimiento" className='block'>Fecha de Nacimiento</label>
                     <input type="date" id="fecha_nacimiento" {...register("fecha_nacimiento", { required: true })}  
                         className='w-full bg-zinc-700 p-3 rounded-lg mb-3'/>
@@ -100,6 +127,7 @@ export function Nutri2Page() {
                         <option value="F">Femenino</option>
                     </select>
                 </div>
+
                 <div className='col-span-2'>
                     <button type="submit" className='w-full bg-indigo-500 p-3 rounded-lg'>Enviar</button>
                 </div>
@@ -112,15 +140,26 @@ export function Nutri2Page() {
                         onClick={async () => {
                             const aceptar = window.confirm('¿Estás seguro de eliminar este usuario?');
                             if (aceptar) {
-                                await deleteNutri(params.id);
-                                toast.success('Usuario eliminado correctamente', {
-                                    position: "top-center",
-                                    style: {
-                                        background: "#101010",
-                                        color: "#fff"
-                                    }
-                                });
-                                navigate("/nutritec");
+                                try {
+                                    await deleteNutri(params.id);
+                                    toast.success('Usuario eliminado correctamente', {
+                                        position: "top-center",
+                                        style: {
+                                            background: "#101010",
+                                            color: "#fff"
+                                        }
+                                    });
+                                    navigate("/nutritec");
+                                } catch (error) {
+                                    console.error('Error al eliminar usuario:', error);
+                                    toast.error('Error al eliminar el usuario', {
+                                        position: "top-center",
+                                        style: {
+                                            background: "#101010",
+                                            color: "#fff"
+                                        }
+                                    });
+                                }
                             }
                         }}>Eliminar</button>
                 </div>

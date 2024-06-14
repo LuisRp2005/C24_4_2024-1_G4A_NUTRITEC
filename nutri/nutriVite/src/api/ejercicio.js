@@ -1,4 +1,3 @@
-// src/api/ejercicio.js
 import axios from 'axios';
 
 const ejercicioApi = axios.create({
@@ -7,14 +6,13 @@ const ejercicioApi = axios.create({
 
 export const getAllEjercicios = () => ejercicioApi.get("/");
 export const getEjercicio = (id) => ejercicioApi.get(`/${id}/`);
-export const createEjercicio = (ejercicio) => ejercicioApi.post("/", ejercicio, {
-    headers: {
-        'Content-Type': 'multipart/form-data'
-    }
-});
+
+export const createEjercicio = (ejercicio) => {
+    return ejercicioApi.post("/", ejercicio);
+};
+
 export const deleteEjercicio = (id) => ejercicioApi.delete(`/${id}`);
-export const updateEjercicio = (id, ejercicio) => ejercicioApi.put(`/${id}/`, ejercicio, {
-    headers: {
-        'Content-Type': 'multipart/form-data'
-    }
-});
+
+export const updateEjercicio = (id, ejercicio) => {
+    return ejercicioApi.put(`/${id}/`, ejercicio);
+};
