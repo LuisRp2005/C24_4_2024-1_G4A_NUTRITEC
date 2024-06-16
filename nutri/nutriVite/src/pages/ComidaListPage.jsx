@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getAllComida } from '../api/comida'; // Asegúrate de importar la función para obtener todas las comidas
-import { Link } from 'react-router-dom';
+import { getAllComida } from '../api/comida';
+import { ComidaCard } from '../components/ComidaCard';
 
 export function ComidaListPage() {
     const [comidas, setComidas] = useState([]);
@@ -8,7 +8,7 @@ export function ComidaListPage() {
     useEffect(() => {
         async function fetchComidas() {
             try {
-                const response = await getAllComida(); // Llama a la función para obtener todas las comidas
+                const response = await getAllComida();
                 setComidas(response.data);
             } catch (error) {
                 console.error('Error fetching comidas:', error);
@@ -19,18 +19,13 @@ export function ComidaListPage() {
     }, []);
 
     return (
-        <div>
-            <h1>Lista de Comidas</h1>
-            <Link to="/comida-create">Crear Nueva Comida</Link>
-            <ul>
-                {comidas.map((comida) => (
-                    <li key={comida.id}>
-                        <h2>{comida.nombre_comida}</h2>
-                        <p>Calorías: {comida.calorias}</p>
-                        {/* Aquí puedes agregar más detalles de la comida si lo deseas */}
-                    </li>
+        <div className="max-w-4xl mx-auto p-4">
+            <h1 className="text-3xl font-bold text-center p-5">LISTADO DE COMIDAS</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {comidas.map(comida => (
+                    <ComidaCard key={comida.id} comida={comida} />
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

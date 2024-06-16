@@ -5,14 +5,14 @@ const ejercicioApi = axios.create({
 });
 
 export const getAllEjercicios = () => ejercicioApi.get("/");
-export const getEjercicio = (id) => ejercicioApi.get(`/${id}/`);
+export const getEjercicio = (id_ejercicio) => ejercicioApi.get(`/${id_ejercicio}/`);
 
 export const createEjercicio = (ejercicio) => {
     return ejercicioApi.post("/", ejercicio);
 };
 
-export const deleteEjercicio = (id) => ejercicioApi.delete(`/${id}`);
+export const deleteEjercicio = (id_ejercicio) => ejercicioApi.delete(`/${id_ejercicio}`);
 
-export const updateEjercicio = (id, ejercicio) => {
-    return ejercicioApi.put(`/${id}/`, ejercicio);
+export const updateEjercicio = (id_ejercicio, ejercicio) => {
+    return ejercicioApi.put(`/${id_ejercicio}/`, ejercicio);
 };

@@ -3,7 +3,9 @@ from .models import Usuario,TipoIMC,Ejercicio,AsignacionEjercicio,CategoriaComid
 from .models import Comida,AsignacionComida,RegistroIMC
 
 # the below code fragment can be found in:
+
 class UsuarioSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Usuario
         fields = '__all__'

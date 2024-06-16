@@ -5,33 +5,13 @@ const comidaApi = axios.create({
 });
 
 export const getAllComida = () => comidaApi.get("/");
-export const getComida = (id) => comidaApi.get(`/${id}/`);
+export const getComida = (id_comida) => comidaApi.get(`/${id_comida}/`);
 
 export const createComida = (comida) => {
-    const formData = new FormData();
-    formData.append('nombre_comida', comida.nombre_comida);
-    formData.append('calorias', comida.calorias);
-    formData.append('categoria', comida.categoria);
-    formData.append('imagen', comida.imagen); // asumiendo que `imagen` es un objeto de tipo File
-
-    return comidaApi.post("/", formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    });
+    return comidaApi.post("/", comida);
 };
 
-export const deleteComida = (id) => comidaApi.delete(`/${id}`);
-export const updateComida = (id, comida) => {
-    const formData = new FormData();
-    formData.append('nombre_comida', comida.nombre_comida);
-    formData.append('calorias', comida.calorias);
-    formData.append('categoria', comida.categoria);
-    formData.append('imagen', comida.imagen); // asumiendo que `imagen` es un objeto de tipo File
-
-    return comidaApi.put(`/${id}/`, formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    });
+export const deleteComida = (id_comida) => comidaApi.delete(`/${id_comida}`);
+export const updateComida = (id_comida, comida) => {
+    return comidaApi.put(`/${id_comida}/`, comida)
 };

@@ -1,170 +1,196 @@
 /* estiloIA.css */
-/* Estilos para NutriIA */
+
+/* Estilos generales */
+body {
+    background-color: #ffffff; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    font-family: 'Arial', sans-serif;
+    margin: 0; /* Elimina el margen por defecto del body */
+    padding: 0; /* Elimina el padding por defecto del body */
+    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+}
 
 .nutri-ia-container {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    min-height: 100vh; /* Altura mínima de la pantalla visible */
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    background-color: #f9fafb;
-    color: #333;
+    align-items: center;
+    justify-content: center;
 }
 
 .chat-container {
-    display: flex;
-    flex: 1;
+    width: 90%; /* Ancho del contenedor del chat */
+    max-width: 1200px; /* Ancho máximo del contenedor del chat */
+    height: 80vh; /* Altura máxima del contenedor del chat */
+    background-color: #1a1a1d; /* Fondo del contenedor del chat (negro oscuro) */
+    border-radius: 20px;
+    overflow: hidden; /* Para ocultar el scroll de la página principal */
+    display: flex; /* Usa flexbox para alinear los elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    margin: 20px; /* Márgenes alrededor del chat */
 }
 
 .sidebar {
-    flex: 1;
-    padding: 1rem;
-    background-color:  #1d185a;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.main {
-    flex: 3;
-    padding: 1rem;
-    background-color: #f9fafb;
-}
-
-.logo {
-    margin-right: 0.5rem;
-}
-
-.brand {
-    font-size: 1.5rem;
-    font-weight: bold;
+    width: 30%; /* Ancho de la barra lateral */
+    padding: 20px;
+    background: linear-gradient(180deg, #009d5c 0%, #0057ad 100%); /* Fondo degradado azul */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .sidebar-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.brand {
+    font-size: 32px; /* Tamaño de fuente del nombre */
+    font-weight: bold;
+    color: #ffffff; /* Color del texto del nombre (blanco) */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra de texto */
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
 }
 
 .new-chat-btn {
-    background-color: #009e61;
-    color: white;
+    background-color: #008341; /* Color de fondo del botón (verde claro) */
+    color: #ffffff; /* Color de texto del botón */
     border: none;
-    padding: 0.75rem;
-    margin-bottom: 1.5rem;
-    border-radius: 0.25rem;
+    padding: 12px 24px;
+    border-radius: 50px; /* Borde redondeado */
     cursor: pointer;
-    width: 70%; /* El botón ocupará el 70% del ancho del contenedor padre */
-    max-width: 300px; /* El botón no superará los 300px de ancho */
-}
-
-
-.query-list {
-    margin-bottom: 1rem;
-}
-
-.query {
-    display: flex;
-    align-items: center;
-    background: #f0f0f0;
-    color: #333;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 0.25rem;
-    cursor: pointer;
+    margin-top: 20px;
     transition: background-color 0.3s ease;
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
-.query:hover {
-    background-color: #e0e0e0;
-}
-
-.query-icon {
-    margin-right: 0.5rem;
-}
-
-.sidebar-footer {
-    margin-top: auto;
-    color: #D9E2EC;
-}
-
-.sidebar-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.sidebar-item:hover {
-    color: #5A4BFF;
-}
-
-.sidebar-icon {
-    margin-right: 0.5rem;
-}
-
-.sidebar-item img {
-    width: 20px; /* Ajusta el tamaño según sea necesario */
-    margin-right: 10px;
-}
-
-.sidebar-item span {
-    font-size: 1rem;
+.new-chat-btn:hover {
+    background-color: #3da35d; /* Cambio de color al hacer hover */
 }
 
 .main {
+    flex: 1; /* Ocupa todo el espacio restante */
     display: flex;
     flex-direction: column;
+    padding: 20px;
 }
 
 .chats {
-    flex: 1;
-    overflow-y: auto;
-    padding-right: 1rem;
+    overflow-y: auto; /* Scroll vertical dentro del contenedor de los chats */
+    flex: 1; /* Ocupa todo el espacio disponible */
+    padding: 10px;
 }
 
 .chat {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
 }
 
-.user {
-    background-color: #DCF8C6;
+.chat .message {
+    padding: 15px;
+    border-radius: 20px;
+    max-width: 70%;
 }
 
-.bot {
-    background-color: #D9E2EC;
+.chat.user {
+    justify-content: flex-end;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.chat.user .message {
+    background-color: #4dc66e; /* Color de fondo de los mensajes del usuario (verde claro) */
+    color: #1a1a1d; /* Color de texto (negro oscuro) */
+}
+
+.chat.bot {
+    justify-content: flex-start;
+    align-self: flex-start;
+    margin-right: auto;
+}
+
+.chat.bot .message {
+    background-color: #003c9d; /* Color de fondo de los mensajes del bot (azul oscuro) */
+    color: #ffffff; /* Color de texto (blanco) */
+}
+
+
+.txt {
+    margin: 0;
+    font-size: 16px; /* Tamaño de fuente de los mensajes */
+    line-height: 1.4; /* Altura de línea */
 }
 
 .chat-footer {
     display: flex;
     align-items: center;
-    margin-top: 1rem;
+    padding: 10px;
+    background-color: #1a1a1d; /* Fondo del footer del chat (negro oscuro) */
+    border-top: 1px solid #2c2c2e; /* Borde superior gris oscuro */
 }
 
 .chat-input {
     flex: 1;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    border: 1px solid #ccc;
-    outline: none;
+    padding: 12px;
+    border: none;
+    border-radius: 50px; /* Borde redondeado */
+    margin-right: 10px;
+    background-color: #2c2c2e; /* Fondo del input de mensaje (gris oscuro) */
+    color: #ffffff; /* Color de texto del input */
+    font-size: 16px; /* Tamaño de fuente del input */
 }
 
 .send-btn {
-    background-color: #5A4BFF;
-    color: white;
+    background-color: #4dc66e; /* Color de fondo del botón de enviar (verde claro) */
     border: none;
-    padding: 0.5rem;
-    margin-left: 0.5rem;
-    border-radius: 0.25rem;
+    padding: 12px;
+    border-radius: 50px; /* Borde redondeado */
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
 .send-btn:hover {
-    background-color: #4638BD;
+    background-color: #3da35d; /* Cambio de color al hacer hover */
 }
 
 .send-icon {
-    width: 1rem;
+    width: 20px;
+    height: 20px;
 }
+
+/* Media queries para responsive design */
+@media screen and (max-width: 1024px) {
+    .chat-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+    }
+
+    .main {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .chat {
+        max-width: 100%;
+    }
+}
+

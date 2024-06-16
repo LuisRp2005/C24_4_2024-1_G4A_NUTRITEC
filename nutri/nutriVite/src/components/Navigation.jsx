@@ -96,7 +96,7 @@ export function Navigations() {
                     </div>
                     <div className="option-button">
                         <button>
-                            <Link to="#">Crear nuevo Categoria de comida</Link>
+                            <Link to="/categoriaComida-create">Crear nuevo Categoria de comida</Link>
                         </button>
                     </div>
                 </div>
