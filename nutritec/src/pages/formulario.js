@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../components/Navbar';
-import axios from 'axios';
+import axios from '../service/axiosConfig';
 import '../pages/styles.css';
 
 const Formulario = () => {
@@ -14,14 +14,25 @@ const Formulario = () => {
     const [correo, setCorreo] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:8080/api/v1/token')
-            .then(response => {
-                const usuario = response.data;
-                setCorreo(usuario.correo);
-            })
-            .catch(error => {
-                console.error("Error al obtener los datos del usuario:", error);
-            });
+        const storedCorreo = localStorage.getItem('email');
+        if (storedCorreo) {
+            setCorreo(storedCorreo);
+        } else {
+            axios.get('/token')
+                .then(response => {
+                    const usuario = response.data;
+                    setCorreo(usuario.email);
+                    localStorage.setItem('email', usuario.email); // Guardar el correo en localStorage
+                })
+                .catch(error => {
+                    console.error("Error al obtener los datos del usuario:", error);
+                    if (error.response && error.response.status === 401) {
+                        // Redirigir a la página de inicio de sesión o renovar el token
+                        console.error("Token no válido o expirado. Redirigiendo a la página de inicio de sesión.");
+                        // Redirigir al usuario a la página de inicio de sesión
+                    }
+                });
+        }
     }, []);
 
     const handleSubmit = (e) => {
@@ -40,14 +51,14 @@ const Formulario = () => {
     
         console.log(usuarioData); 
     
-        axios.post('http://localhost:8080/api/v1/usuario', usuarioData)
+        axios.post('/usuario', usuarioData)
             .then(response => {
                 console.log("Datos del usuario guardados:", response.data);
             })
             .catch(error => {
                 console.error("Error al guardar los datos del usuario:", error);
             });
-    }    
+    };
 
     return (
         <div className="green-background"> {/* Clase para el fondo verde */}
@@ -115,6 +126,7 @@ const Formulario = () => {
                                 id="fechaNacimiento"
                                 value={fechaNacimiento}
                                 onChange={(e) => setFechaNacimiento(e.target.value)}
+                                placeholder="Ingrese su fecha de nacimiento"
                                 required
                                 className="form-control"
                             />
@@ -128,9 +140,10 @@ const Formulario = () => {
                                 required
                                 className="form-control"
                             >
-                                <option value="" disabled>Seleccione su género</option>
+                                <option value="">Seleccione su género</option>
                                 <option value="M">Masculino</option>
                                 <option value="F">Femenino</option>
+                                <option value="O">Otro</option>
                             </select>
                         </div>
                         <div className="form-group">
@@ -140,7 +153,7 @@ const Formulario = () => {
                                 id="contraseña"
                                 value={contraseña}
                                 onChange={(e) => setContraseña(e.target.value)}
-                                placeholder="Ingrese una contraseña"
+                                placeholder="Ingrese su contraseña"
                                 required
                                 className="form-control"
                             />
@@ -155,12 +168,12 @@ const Formulario = () => {
                                 className="form-control"
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary btn-block">Enviar</button>
+                        <button type="submit" className="btn btn-primary">Guardar Datos</button>
                     </form>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default Formulario;
