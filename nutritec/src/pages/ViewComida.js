@@ -30,8 +30,8 @@ class ViewComida extends Component {
                             <div className="carousel-item active">
                                 <img className="w-100" src='/carrusel1.jpg' alt="Image" />
                                 <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    <h1 className="display-1 text-white">Comidas</h1>
-                                    <h3 className="text-white m-0">* Comidas que te ayudarán a llegar a tu requerimiento deseado *</h3>
+                                    <h1 className="display-1 text-black ">Comidas</h1>
+                                    <h3 className="m-0">* Comidas que te ayudarán a llegar a tu requerimiento deseado *</h3>
                                 </div>
                             </div>
                         </div>  
