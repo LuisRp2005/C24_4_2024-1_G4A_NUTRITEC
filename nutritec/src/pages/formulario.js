@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from '../components/Navbar';
 import axios from '../service/axiosConfig';
 import '../pages/styles.css';
+import Token from '../components/Token';
+import TokenService from '../service/TokenService';
 
-const Formulario = () => {
+const Formulario = ({ initialEmail }) => {
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
     const [talla, setTalla] = useState('');
@@ -11,53 +13,42 @@ const Formulario = () => {
     const [fechaNacimiento, setFechaNacimiento] = useState('');
     const [genero, setGenero] = useState('');
     const [contraseña, setContraseña] = useState('');
-    const [correo, setCorreo] = useState('');
+    const [correo, setCorreo] = useState(initialEmail || ''); // Inicializa el estado con el email recibido como prop
 
     useEffect(() => {
-        const storedCorreo = localStorage.getItem('email');
-        if (storedCorreo) {
-            setCorreo(storedCorreo);
-        } else {
-            axios.get('/token')
-                .then(response => {
-                    const usuario = response.data;
-                    setCorreo(usuario.email);
-                    localStorage.setItem('email', usuario.email); // Guardar el correo en localStorage
-                })
-                .catch(error => {
-                    console.error("Error al obtener los datos del usuario:", error);
-                    if (error.response && error.response.status === 401) {
-                        // Redirigir a la página de inicio de sesión o renovar el token
-                        console.error("Token no válido o expirado. Redirigiendo a la página de inicio de sesión.");
-                        // Redirigir al usuario a la página de inicio de sesión
-                    }
-                });
-        }
+        TokenService.getToken()
+            .then((response) => {
+                if (response && response.email) {
+                    setCorreo(response.email); // Actualiza el estado del correo con el valor recibido del token
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
     
         const usuarioData = {
-            nombre: nombre,
-            apellido: apellido,
+            nombre,
+            apellido,
             altura: talla,
-            peso: peso,
-            fechaNacimiento: fechaNacimiento,
-            genero: genero,
-            contraseña: contraseña,
-            correo: correo // incluir el correo en los datos enviados
+            peso,
+            fechaNacimiento,
+            genero,
+            contraseña,
+            correo // Incluir el correo en los datos enviados
         };
     
         console.log(usuarioData); 
     
-        axios.post('/usuario', usuarioData)
-            .then(response => {
-                console.log("Datos del usuario guardados:", response.data);
-            })
-            .catch(error => {
-                console.error("Error al guardar los datos del usuario:", error);
-            });
+        try {
+            const response = await axios.post('/usuario', usuarioData);
+            console.log("Datos del usuario guardados:", response.data);
+        } catch (error) {
+            console.error("Error al guardar los datos del usuario:", error);
+        }
     };
 
     return (
@@ -164,7 +155,7 @@ const Formulario = () => {
                                 type="email"
                                 id="correo"
                                 value={correo}
-                                readOnly
+                                onChange={(e) => setCorreo(e.target.value)}
                                 className="form-control"
                             />
                         </div>
@@ -176,4 +167,10 @@ const Formulario = () => {
     );
 };
 
-export default Formulario;
+const FormularioWithToken = () => (
+    <Token>
+        {({ email }) => <Formulario initialEmail={email} />}
+    </Token>
+);
+
+export default FormularioWithToken;

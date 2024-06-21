@@ -4,18 +4,14 @@ const instance = axios.create({
     baseURL: 'http://localhost:8080/api/v1',
 });
 
-// Interceptor para añadir el token a cada solicitud
-instance.interceptors.request.use(
-    (config) => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-    },
-    (error) => {
-        return Promise.reject(error);
+instance.interceptors.request.use(config => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
     }
-);
+    return config;
+}, error => {
+    return Promise.reject(error);
+});
 
 export default instance;
