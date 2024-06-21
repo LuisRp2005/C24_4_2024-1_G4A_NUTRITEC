@@ -1,7 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import '../pages/styles.css';
 
 const NavBar = () => {
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        // Realizar una solicitud GET para obtener los datos del usuario autenticado
+        const fetchUsuario = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/api/v1/datos', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // Aquí podrías incluir el token de autorización si es necesario
+                    },
+                    withCredentials: true // Incluye credenciales (cookies) en la solicitud
+                });
+
+                if (response.status === 200) {
+                    const data = response.data;
+                    setUserName(data.nombre); // Actualizar el estado con el nombre del usuario
+                } else {
+                    console.error('Error al obtener datos del usuario:', response.statusText);
+                    // Manejar el error adecuadamente (mostrar mensaje al usuario, etc.)
+                }
+            } catch (error) {
+                console.error('Error en la solicitud:', error);
+                // Manejar el error adecuadamente (mostrar mensaje al usuario, etc.)
+            }
+        };
+
+        fetchUsuario();
+    }, []);
     return (
         <div className="container-fluid p-0 nav-bar">
             <nav className="navbar navbar-expand-lg navbar-dark">
@@ -29,7 +59,7 @@ const NavBar = () => {
                         </div>
                     </div>
                     <div className="nav-item ms-auto px-5">
-                        <a href='/Usuario'><button className="btn btn-outline-light">Usuario</button></a>
+                        <a href='/Usuario'><button className="btn btn-outline-light">{userName || 'Usuario'}</button></a>
                     </div>
                 </div>
             </nav>

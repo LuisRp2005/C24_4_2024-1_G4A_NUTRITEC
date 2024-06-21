@@ -44,48 +44,49 @@ const Usuario = () => {
     return (
         <div>
             <NavBar />
-            <div className="user-container">
-                <h1 className='user-title'>Usuario</h1>
-                <div className="user-avatar">
-                    <label htmlFor="foto" className="avatar-label">
-                        <img src="/img_usuario.png" alt="Avatar" className="avatar-img" />
-                    </label>
+            {usuario && (
+                <div className="user-container">
+                    <h1 className='user-title'>{usuario.nombre} {usuario.apellido}</h1>
+                    <div className="user-avatar">
+                        <label htmlFor="foto" className="avatar-label">
+                            <img src={usuario.picture} alt="Avatar" className="avatar-img" />
+                        </label>
+                    </div>
+                    <form className="user-form">
+                        
+                            <div className="user-info">
+                                <div className="form-group">
+                                    <label htmlFor="nombre">Nombre:</label>
+                                    <input type="text" id="nombre" className="form-input" value={usuario.nombre} readOnly />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="apellido">Apellido:</label>
+                                    <input type="text" id="apellido" className="form-input" value={usuario.apellido} readOnly />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="correo">Correo:</label>
+                                    <input type="email" id="correo" className="form-input" value={usuario.email} readOnly />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="fechaNacimiento">Fecha de Nacimiento:</label>
+                                    <input type="date" id="fechaNacimiento" className="form-input" value={formatDate(usuario.edad)} readOnly />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="talla">Talla (cm):</label>
+                                    <input type="number" id="talla" className="form-input" value={parseFloat(usuario.altura)} readOnly />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="peso">Peso (kg):</label>
+                                    <input type="number" id="peso" className="form-input" value={usuario.peso} readOnly />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="imc">IMC:</label>
+                                    <input type="text" id="imc" className="form-input" value={usuario.imc} readOnly />
+                                </div>
+                            </div>
+                    </form>
                 </div>
-                <form className="user-form">
-                    {usuario && (
-                        <div className="user-info">
-                            <div className="form-group">
-                                <label htmlFor="nombre">Nombre:</label>
-                                <input type="text" id="nombre" className="form-input" value={usuario.nombre} readOnly />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="apellido">Apellido:</label>
-                                <input type="text" id="apellido" className="form-input" value={usuario.apellido} readOnly />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="correo">Correo:</label>
-                                <input type="email" id="correo" className="form-input" value={usuario.correo} readOnly />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="fechaNacimiento">Fecha de Nacimiento:</label>
-                                <input type="date" id="fechaNacimiento" className="form-input" value={formatDate(usuario.fechaNacimiento)} readOnly />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="talla">Talla (cm):</label>
-                                <input type="number" id="talla" className="form-input" value={parseFloat(usuario.talla)} readOnly />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="peso">Peso (kg):</label>
-                                <input type="number" id="peso" className="form-input" value={usuario.peso} readOnly />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="imc">IMC:</label>
-                                <input type="text" id="imc" className="form-input" value={usuario.imc} readOnly />
-                            </div>
-                        </div>
-                    )}
-                </form>
-            </div>
+            )}
         </div>
     );
 };
