@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Ejercicio } from '../service/Ejercicio';
 import NavBar from '../components/Navbar';
-import '../pages/styles.css'; // Asegúrate de importar tu archivo de estilos CSS
+import '../pages/styles.css';
 
-class ViewEjercicio extends Component { 
+class ViewEjercicio extends Component {
     constructor() {
         super();
         this.state = {
-            ejercicios: [] 
+            ejercicios: [],
+            filtro: 'alta' // Valor por defecto del filtro
         };
-        this.ejercicioService = new Ejercicio(); 
+        this.ejercicioService = new Ejercicio();
     }
 
     componentDidMount() {
@@ -21,7 +22,22 @@ class ViewEjercicio extends Component {
         });
     }
 
+    handleChangeFiltro = (filtro) => {
+        this.setState({ filtro });
+    }
+
     render() {
+        const { ejercicios, filtro } = this.state;
+        // Filtrar ejercicios según el filtro seleccionado
+        const ejerciciosFiltrados = ejercicios.filter(ejercicio => {
+            if (filtro === 'alta') {
+                return ejercicio.nivel === 'alta';
+            } else if (filtro === 'baja') {
+                return ejercicio.nivel === 'baja';
+            }
+            return true; // Mostrar todos si no hay filtro seleccionado
+        });
+
         return (
             <div>
                 <NavBar />
@@ -43,9 +59,25 @@ class ViewEjercicio extends Component {
                         <div className="text-center mb-3 pb-3">
                             <h6 className="text-primary text-uppercase" style={{ letterSpacing: '5px' }}>Rutina</h6>
                             <h1>Ejercicios</h1>
+                            <div className="btn-group" role="group" aria-label="Filtros">
+                                <button
+                                    type="button"
+                                    className={`btn btn-${filtro === 'alta' ? 'primary' : 'outline-primary'} btn-lg mx-1`}
+                                    onClick={() => this.handleChangeFiltro('alta')}
+                                >
+                                    Alta
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`btn btn-${filtro === 'baja' ? 'primary' : 'outline-primary'} btn-lg mx-1`}
+                                    onClick={() => this.handleChangeFiltro('baja')}
+                                >
+                                    Baja
+                                </button>
+                            </div>
                         </div>
                         <div className="row pb-3">
-                            {this.state.ejercicios.map(ejercicio => (
+                            {ejerciciosFiltrados.map(ejercicio => (
                                 <div key={ejercicio.id} className="col-lg-4 col-md-6 mb-4 pb-2">
                                     <div className="blog-item">
                                         <div className="position-relative">
