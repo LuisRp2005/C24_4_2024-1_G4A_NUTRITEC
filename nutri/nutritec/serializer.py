@@ -1,14 +1,21 @@
 from rest_framework import serializers
 from .models import Usuario,TipoIMC,Ejercicio,AsignacionEjercicio,CategoriaComida
 from .models import Comida,AsignacionComida,RegistroIMC
+from datetime import datetime
 
 # the below code fragment can be found in:
 
 class UsuarioSerializer(serializers.ModelSerializer):
-    
+    fecha_nacimiento = serializers.SerializerMethodField()
+
     class Meta:
         model = Usuario
         fields = '__all__'
+
+    def get_fecha_nacimiento(self, obj):
+        if isinstance(obj.fecha_nacimiento, datetime):
+            return obj.fecha_nacimiento.date()
+        return obj.fecha_nacimiento
 
 class TipoIMCSerializer(serializers.ModelSerializer):
     class Meta:

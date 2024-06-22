@@ -49,7 +49,7 @@ const Formulario = ({ initialEmail }) => {
             contraseña,
             correo,
             imc,
-            rol: 1
+            rol: 0
         };
 
         console.log(usuarioData);

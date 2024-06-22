@@ -1,3 +1,4 @@
+//scr/api/nutri.app.js
 import axios from 'axios'
 const nutriusiario = axios.create({
     baseURL:"http://127.0.0.1:8000/nutritec/Usuario/"

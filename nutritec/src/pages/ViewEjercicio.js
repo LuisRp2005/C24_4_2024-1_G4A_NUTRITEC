@@ -81,7 +81,7 @@ class ViewEjercicio extends Component {
                                 <div key={ejercicio.id} className="col-lg-4 col-md-6 mb-4 pb-2">
                                     <div className="blog-item">
                                         <div className="position-relative">
-                                            <img className="img-fluid w-100" src="/img_referencial.jpg" alt="" />
+                                            <img className="img-fluid w-100" src={`http://127.0.0.1:8000/media/${ejercicio.images}`} alt="" />
                                             <div className="blog-date">
                                                 <h6 className="font-weight-bold mb-n1">Nro</h6>
                                                 <h6 className="font-weight-bold mb-n1">{ejercicio.id}</h6>

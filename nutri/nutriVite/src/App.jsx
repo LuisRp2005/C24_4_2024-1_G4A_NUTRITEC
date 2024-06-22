@@ -1,4 +1,6 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginAdmin from './components/LoginAdmin'; 
 import { NutriPage } from './pages/nutri1';
 import { Nutri2Page } from './pages/nutriU';
 import { TipoIMCListPage } from './pages/TipoIMCListPage';
@@ -24,7 +26,8 @@ function App() {
     <BrowserRouter>
       <div className="container mx-auto">
         <Routes>
-          <Route path="/" element={<Navigations/>} />
+          <Route path="/" element={<LoginAdmin />} />
+          <Route path="/navigations" element={<Navigations />} />
           <Route path="/nutritec" element={<NutriPage />} />
           <Route path="/nutritec-create" element={<Nutri2Page/>} />
           <Route path="/nutritec/:id" element={<Nutri2Page/>} />
