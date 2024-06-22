@@ -30,8 +30,14 @@ const Formulario = ({ initialEmail }) => {
             });
     }, []);
 
+    const calcularIMC = (peso, altura) => {
+        return (peso / (altura * altura)).toFixed(2); // Calcular el IMC y redondearlo a 2 decimales
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const imc = calcularIMC(peso, talla); // Calcular el IMC
 
         const usuarioData = {
             nombre,
@@ -41,7 +47,9 @@ const Formulario = ({ initialEmail }) => {
             fechaNacimiento,
             genero,
             contraseña,
-            correo
+            correo,
+            imc,
+            rol: 1
         };
 
         console.log(usuarioData);
@@ -97,7 +105,7 @@ const Formulario = ({ initialEmail }) => {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="form-group">
-                                    <label htmlFor="talla">Talla (cm):</label>
+                                    <label htmlFor="talla">Talla (M):</label>
                                     <input
                                         type="number"
                                         id="talla"
@@ -165,6 +173,7 @@ const Formulario = ({ initialEmail }) => {
                                 value={correo}
                                 onChange={(e) => setCorreo(e.target.value)}
                                 className="form-control"
+                                readOnly
                             />
                         </div>
                         <div className="form-group">

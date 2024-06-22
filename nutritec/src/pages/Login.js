@@ -38,7 +38,28 @@ const Login = () => {
               <div className='text-center mt-4'>
                 <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
                 <p className='mt-3'>O también:</p>
-                <button type="button" onClick={LoginGoogle} className="btn btn-danger">Iniciar Sesión con Google</button>
+                <button 
+                    type="button" 
+                    onClick={LoginGoogle} 
+                    className="btn btn-write" 
+                    style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        border: '1px solid #000', // Borde delgado
+                        padding: '8px 16px', // Añadir padding para una mejor apariencia
+                        borderRadius: '4px' // Redondear bordes opcionalmente
+                    }}>
+                    <img 
+                        src="google.jpg" 
+                        alt="Google Logo" 
+                        style={{ 
+                            width: '20px', 
+                            height: '20px', 
+                            marginRight: '8px' 
+                        }} 
+                    />
+                    Iniciar Sesión con Google
+                </button>
               </div>
             </form>
           </div>
