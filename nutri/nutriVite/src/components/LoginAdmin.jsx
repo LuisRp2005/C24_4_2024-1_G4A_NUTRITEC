@@ -16,9 +16,9 @@ const LoginAdmin = () => {
         }
 
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/nutritec/Usuario/?correo=${email}&contraseña=${password}`);
+            const response = await axios.get('http://127.0.0.1:8000/nutritec/Usuario/');
             
-            const usuario = response.data[0]; // Suponiendo que la API devuelve un único usuario
+            const usuario = response.data.find(user => user.correo === email && user.contraseña === password);
 
             if (usuario && usuario.rol === 1) {
                 // Inicio de sesión exitoso para usuario con rol 1

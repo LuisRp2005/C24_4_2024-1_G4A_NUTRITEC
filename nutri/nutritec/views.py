@@ -1,11 +1,10 @@
 from django.shortcuts import render
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, status
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
-from .models import Usuario, TipoIMC, Ejercicio, AsignacionEjercicio, CategoriaComida
-from .models import Comida, AsignacionComida, RegistroIMC
-from .serializer import UsuarioSerializer, TipoIMCSerializer, EjercicioSerializer, AsignacionEjercicioSerializer
-from .serializer import CategoriaComidaSerializer, ComidaSerializer, AsignacionComidaSerializer, RegistroIMCSerializer
+from .models import Usuario, TipoIMC, Ejercicio, AsignacionEjercicio, CategoriaComida, Comida, AsignacionComida, RegistroIMC
+from .serializer import UsuarioSerializer, TipoIMCSerializer, EjercicioSerializer, AsignacionEjercicioSerializer, CategoriaComidaSerializer, ComidaSerializer, AsignacionComidaSerializer, RegistroIMCSerializer
 
 class APIRoot(generics.GenericAPIView):
     def get(self, request, *args, **kwargs):
@@ -51,3 +50,20 @@ class AsignacionComidaView(viewsets.ModelViewSet):
 class RegistroIMCView(viewsets.ModelViewSet):
     serializer_class = RegistroIMCSerializer
     queryset = RegistroIMC.objects.all()
+
+@api_view(['GET'])
+def login_user(request):
+    email = request.GET.get('correo')
+    password = request.GET.get('contraseña')
+
+    if not email or not password:
+        return Response({'error': 'Por favor ingrese correo electrónico y contraseña'}, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        user = Usuario.objects.get(correo=email, contraseña=password)
+        if user.rol == 1:
+            return Response({'message': 'Inicio de sesión exitoso', 'rol': user.rol}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'Usuario no autorizado'}, status=status.HTTP_403_FORBIDDEN)
+    except Usuario.DoesNotExist:
+        return Response({'error': 'Credenciales incorrectas'}, status=status.HTTP_401_UNAUTHORIZED)

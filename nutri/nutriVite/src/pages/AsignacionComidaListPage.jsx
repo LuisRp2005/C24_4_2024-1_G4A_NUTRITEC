@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { getAllAsignacionComida } from '../api/asignacionComida'; // Asegúrate de importar la función para obtener todas las asignaciones de comida
 import { Link } from 'react-router-dom';
 
