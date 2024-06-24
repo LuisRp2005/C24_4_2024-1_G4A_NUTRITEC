@@ -50,13 +50,9 @@ const NavBar = () => {
                         <a href="/ViewEjercicio" className="nav-item nav-link">Ejercicios</a>
                         <a href="/viewComida" className="nav-item nav-link">Comida</a>
                         <a href="/NutriIA" className="nav-item nav-link">NutrIA</a>
-                        <div className="nav-item dropdown">
-                            <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <div className="dropdown-menu text-capitalize">
-                                <a href="reservation.html" className="dropdown-item">Reservation</a>
-                                <a href="testimonial.html" className="dropdown-item">Testimonial</a>
-                            </div>
-                        </div>
+                        <a href="/viewComidaDesig" className="nav-item nav-link">Comida Designada</a>
+                        <a href="/viewEjercicioDesig" className="nav-item nav-link">Ejercicio Designado</a>
+                        
                     </div>
                     <div className="nav-item ms-auto px-5">
                         <a href='/Usuario'><button className="btn btn-outline-light">{userName || 'Usuario'}</button></a>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import '../pages/styles.css';
 import NavBar from '../components/Navbar';
@@ -6,7 +5,6 @@ import NavBar from '../components/Navbar';
 
 const Home = () => {
     return (
-        
         <div>
             <NavBar />
             <div className="container-fluid p-0 mb-5">

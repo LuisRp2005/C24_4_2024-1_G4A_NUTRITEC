@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../pages/styles.css';
 import NavBar from '../components/Navbar';
 
+
 const Usuario = () => {
     const [usuario, setUsuario] = useState(null);
 
