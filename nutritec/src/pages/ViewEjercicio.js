@@ -8,7 +8,7 @@ class ViewEjercicio extends Component {
         super();
         this.state = {
             ejercicios: [],
-            filtro: 'alta' // Valor por defecto del filtro
+            filtro: 'todos' // Valor por defecto del filtro
         };
         this.ejercicioService = new Ejercicio();
     }
@@ -34,6 +34,8 @@ class ViewEjercicio extends Component {
                 return ejercicio.nivel === 'alta';
             } else if (filtro === 'baja') {
                 return ejercicio.nivel === 'baja';
+            } else if (filtro === 'moderado') {
+                return ejercicio.nivel === 'moderado';
             }
             return true; // Mostrar todos si no hay filtro seleccionado
         });
@@ -62,6 +64,20 @@ class ViewEjercicio extends Component {
                             <div className="btn-group" role="group" aria-label="Filtros">
                                 <button
                                     type="button"
+                                    className={`btn btn-${filtro === 'todos' ? 'primary' : 'outline-primary'} btn-lg mx-1`}
+                                    onClick={() => this.handleChangeFiltro('todos')}
+                                >
+                                    Todos
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`btn btn-${filtro === 'moderado' ? 'primary' : 'outline-primary'} btn-lg mx-1`}
+                                    onClick={() => this.handleChangeFiltro('moderado')}
+                                >
+                                    Moderado
+                                </button>
+                                <button
+                                    type="button"
                                     className={`btn btn-${filtro === 'alta' ? 'primary' : 'outline-primary'} btn-lg mx-1`}
                                     onClick={() => this.handleChangeFiltro('alta')}
                                 >
@@ -81,7 +97,7 @@ class ViewEjercicio extends Component {
                                 <div key={ejercicio.id} className="col-lg-4 col-md-6 mb-4 pb-2">
                                     <div className="blog-item">
                                         <div className="position-relative">
-                                            <img className="img-fluid w-100" src={`http://127.0.0.1:8000/media/${ejercicio.images}`} alt="" />
+                                            <img className="img-fluid w-100" src={ejercicio.images} alt="" />
                                             <div className="blog-date">
                                                 <h6 className="font-weight-bold mb-n1">Nro</h6>
                                                 <h6 className="font-weight-bold mb-n1">{ejercicio.id}</h6>
