@@ -1,3 +1,4 @@
+// comida.js
 import axios from 'axios';
 
 const comidaApi = axios.create({
@@ -7,11 +8,8 @@ const comidaApi = axios.create({
 export const getAllComida = () => comidaApi.get("/");
 export const getComida = (id_comida) => comidaApi.get(`/${id_comida}/`);
 
-export const createComida = (comida) => {
-    return comidaApi.post("/", comida);
-};
+export const createComida = (comida) => comidaApi.post("/", comida);
 
 export const deleteComida = (id_comida) => comidaApi.delete(`/${id_comida}`);
-export const updateComida = (id_comida, comida) => {
-    return comidaApi.put(`/${id_comida}/`, comida)
-};
+
+export const updateComida = (id_comida, comida) => comidaApi.put(`/${id_comida}/`, comida);

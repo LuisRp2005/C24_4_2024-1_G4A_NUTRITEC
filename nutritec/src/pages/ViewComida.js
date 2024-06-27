@@ -93,7 +93,14 @@ class ViewComida extends Component {
                                 <div key={comida.idComida} className="col-lg-4 col-md-6 mb-4 pb-2">
                                     <div className="blog-item">
                                         <div className="position-relative">
-                                            <img className="img-fluid" src={comida.images} alt="" style={{ height: '300px', objectFit: 'cover' }} />
+                                        <img
+                                            className="img-fluid"
+                                            src={`http://127.0.0.1:8000/media/${comida.images}`}
+                                            alt=""
+                                            style={{ height: '300px', objectFit: 'cover' }}
+                                        />
+
+
                                             <div className="blog-date">
                                                 <h6 className="font-weight-bold mb-n1">Nro</h6>
                                                 <h6 className="font-weight-bold mb-n1">{comida.idComida}</h6>

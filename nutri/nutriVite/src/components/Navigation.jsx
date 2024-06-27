@@ -68,23 +68,11 @@ export function Navigations() {
                 {/* Asignación de Ejercicio */}
                 <div className="option-card">
                     <div className="option-title">
-                        <Link to="/asignacionEjercicio" className="font-bold text-xl mb-2">Asignación de Ejercicio</Link>
+                        <Link to="/asignacion-ejercicio" className="font-bold text-xl mb-2">Asignación de Ejercicio</Link>
                     </div>
                     <div className="option-button">
                         <button>
-                            <Link to="/asignacionEjercicio-create">Crear nueva Asignación de Ejercicio</Link>
-                        </button>
-                    </div>
-                </div>
-
-                {/* Registro IMC */}
-                <div className="option-card">
-                    <div className="option-title">
-                        <Link to="/registroIMC" className="font-bold text-xl mb-2">Registro IMC</Link>
-                    </div>
-                    <div className="option-button">
-                        <button>
-                            <Link to="/registroIMC-create">Crear nuevo Registro IMC</Link>
+                            <Link to="/asignacion-ejercicio-create">Crear nueva Asignación de Ejercicio</Link>
                         </button>
                     </div>
                 </div>

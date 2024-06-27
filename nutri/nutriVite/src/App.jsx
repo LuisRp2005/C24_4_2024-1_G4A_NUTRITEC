@@ -11,8 +11,6 @@ import { ComidaListPage } from './pages/ComidaListPage';
 import { ComidaFormPage } from './pages/ComidaFormPage';
 import { AsignacionComidaListPage } from './pages/AsignacionComidaListPage';
 import { AsignacionComidaFormPage } from './pages/AsignacionComidaFormPage';
-import { RegistroIMCListPage } from './pages/RegistroIMCListPage';
-import { RegistroIMCFormPage } from './pages/RegistroIMCFormPage';
 import { AsignacionEjercicioListPage } from './pages/AsignacionEjercicioListPage';
 import { AsignacionEjercicioFormPage } from './pages/AsignacionEjercicioFormPage';
 import { CategoriaComidaListPage } from "./pages/CategoriaComidaListPage";
@@ -46,9 +44,6 @@ function App() {
           <Route path="/asignacionComida" element={<AsignacionComidaListPage />} />
           <Route path="/asignacionComida-create" element={<AsignacionComidaFormPage />} />
           <Route path="/asignacionComida/:id" element={<AsignacionComidaFormPage />} />
-          <Route path="/registroIMC" element={<RegistroIMCListPage />} />
-          <Route path="/registroIMC-create" element={<RegistroIMCFormPage />} />
-          <Route path="/registroIMC/:id" element={<RegistroIMCFormPage />} />
           <Route path="/categoriaComida" element={<CategoriaComidaListPage />} />
           <Route path="/categoriaComida-create" element={<CategoriaComidaFormPage />} />
           <Route path="/categoriaComida/:id" element={<CategoriaComidaFormPage />} />
