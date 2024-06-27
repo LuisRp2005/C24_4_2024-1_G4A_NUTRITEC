@@ -1,0 +1,189 @@
+
+/* Estilos para el fondo de las secciones */
+body .bg-img {
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: 20px;
+    background-color: #000000;
+}
+
+
+
+/* Estilos para los enlaces */
+a, a:hover {
+    color: #000000;
+}
+
+/* Estilos para el cuadro de texto del banner */
+.fh5co-banner-text-box {
+    position: relative;
+    max-height: 120px;
+    display: inline-block;
+    margin-top: 250px;
+}
+
+.fh5co-banner-text-box .quote-box {
+    max-width: 455px;
+    padding: 20px 0;
+    animation: fadeInUp 2s ease; /* Animación de entrada */
+}
+
+.fh5co-banner-text-box .quote-box h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 42px;
+    animation: glowText 2s infinite alternate; /* Animación de texto resplandeciente */
+}
+
+.fh5co-banner-text-box .quote-box h2 span {
+    color: #e4e4e4;
+    font-size: 20px;
+    font-style: bold;
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowText {
+    from {
+        text-shadow: 0 0 10px #66ff00, 0 0 20px #66ff00, 0 0 30px #66ff00;
+    }
+    to {
+        text-shadow: 0 0 20px #66ff00, 0 0 30px #66ff00, 0 0 40px #66ff00;
+    }
+}
+
+/* Estilos para las secciones de redes y sobre nosotros */
+.fh5co-network, .fh5co-about-us {
+    background-size: cover;
+    padding: 50px 0;
+    background-color: #616161; /* Verde oscuro */
+}
+
+.fh5co-network h2, .fh5co-about-us h2 {
+    color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.fh5co-network h4, .fh5co-about-us h4, .fh5co-network h5, .fh5co-about-us h5, .fh5co-network p, .fh5co-about-us p {
+    color: #b6b6b6;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+
+/* Estilos para el contenido de la caja */
+.fh5co-content-box {
+    background: #ffffff;
+    padding-bottom: 100px;
+}
+
+/* Estilos para las tarjetas de entrenadores */
+.fh5co-content-box .trainers .card {
+    border: none;
+    background: transparent;
+    animation: fadeIn 2s ease; /* Animación de entrada */
+}
+
+.fh5co-content-box .trainers .card img {
+    max-width: 250px;
+    margin: 0 auto;
+    max-height: 250px;
+    animation: zoomIn 2s; /* Animación de zoom */
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Estilos para el pie de página */
+footer {
+    background: #101011;
+    color: #fff;
+    padding: 30px 0;
+}
+
+footer .footer2 h4 {
+    color: #ff8013;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    margin: 20px auto;
+}
+
+footer .footer2 .form-box {
+    background: #fff;
+    padding: 20px 30px;
+    margin-top: -30px;
+}
+
+footer .footer2 input[type='text'], footer .footer2 input[type='email'] {
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid #000;
+}
+
+footer .footer2 input[type='text']:focus, footer .footer2 input[type='email']:focus {
+    box-shadow: none;
+    border-color: #ff8013;
+}
+
+footer .footer2 .btn {
+    min-width: 150px;
+    border-radius: 0;
+}
+
+footer .footer3 {
+    padding-top: 50px;
+}
+
+footer .footer3 a {
+    background: #fff;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    padding-top: 5px;
+}
+
+footer .footer3 a:hover {
+    background: #ff8013;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    border: 3px solid #052e0f;
+    width: 100%;
+    left: 0;
+}
