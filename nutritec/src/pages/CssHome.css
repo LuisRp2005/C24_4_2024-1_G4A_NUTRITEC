@@ -1,4 +1,3 @@
-
 /* Estilos para el fondo de las secciones */
 body .bg-img {
     background-repeat: no-repeat;
@@ -7,10 +6,9 @@ body .bg-img {
     background-color: #000000;
 }
 
-
-
 /* Estilos para los enlaces */
-a, a:hover {
+a,
+a:hover {
     color: #000000;
 }
 
@@ -64,13 +62,15 @@ a, a:hover {
 }
 
 /* Estilos para las secciones de redes y sobre nosotros */
-.fh5co-network, .fh5co-about-us {
+.fh5co-network,
+.fh5co-about-us {
     background-size: cover;
     padding: 50px 0;
     background-color: #616161; /* Verde oscuro */
 }
 
-.fh5co-network h2, .fh5co-about-us h2 {
+.fh5co-network h2,
+.fh5co-about-us h2 {
     color: #ffffff;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
@@ -78,7 +78,12 @@ a, a:hover {
     margin-bottom: 0;
 }
 
-.fh5co-network h4, .fh5co-about-us h4, .fh5co-network h5, .fh5co-about-us h5, .fh5co-network p, .fh5co-about-us p {
+.fh5co-network h4,
+.fh5co-about-us h4,
+.fh5co-network h5,
+.fh5co-about-us h5,
+.fh5co-network p,
+.fh5co-about-us p {
     color: #b6b6b6;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
@@ -90,18 +95,30 @@ a, a:hover {
     padding-bottom: 100px;
 }
 
-/* Estilos para las tarjetas de entrenadores */
+/* Estilos previos */
+
+/* Estilo para las tarjetas de historias inspiradoras */
 .fh5co-content-box .trainers .card {
-    border: none;
-    background: transparent;
-    animation: fadeIn 2s ease; /* Animación de entrada */
+    opacity: 0;
+    transform: translateY(20px);
+    animation-fill-mode: forwards;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    background-color: #ffffff; /* Cambiar a gris (#666666) */
+}
+
+.fh5co-content-box .trainers .card.animate {
+    animation-duration: 1s;
+    animation-name: fadeIn;
 }
 
 .fh5co-content-box .trainers .card img {
-    max-width: 250px;
-    margin: 0 auto;
-    max-height: 250px;
-    animation: zoomIn 2s; /* Animación de zoom */
+    transform: scale(0);
+    transition: transform 0.7s ease-in-out;
+}
+
+.fh5co-content-box .trainers .card.animate img {
+    transform: scale(1);
+    transition-delay: 0.3s; /* Ajuste para que la imagen comience a escalar después de la animación de fade-in */
 }
 
 /* Animaciones personalizadas */
@@ -116,14 +133,7 @@ a, a:hover {
     }
 }
 
-@keyframes zoomIn {
-    from {
-        transform: scale(0);
-    }
-    to {
-        transform: scale(1);
-    }
-}
+
 
 /* Estilos para el pie de página */
 footer {
@@ -146,14 +156,16 @@ footer .footer2 .form-box {
     margin-top: -30px;
 }
 
-footer .footer2 input[type='text'], footer .footer2 input[type='email'] {
+footer .footer2 input[type='text'],
+footer .footer2 input[type='email'] {
     background: transparent;
     border-radius: 0;
     border: none;
     border-bottom: 2px solid #000;
 }
 
-footer .footer2 input[type='text']:focus, footer .footer2 input[type='email']:focus {
+footer .footer2 input[type='text']:focus,
+footer .footer2 input[type='email']:focus {
     box-shadow: none;
     border-color: #ff8013;
 }
@@ -183,7 +195,230 @@ footer .footer3 a:hover {
 footer::before {
     content: "";
     position: absolute;
-    border: 3px solid #052e0f;
+    border: 3px solid #00290a;
     width: 100%;
     left: 0;
 }
+
+/* Animaciones para las imágenes */
+.gallery .card img {
+    max-width: 100%;
+    height: auto;
+    animation: fadeInImage 2s ease;
+}
+
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* Estilos para la sección de Historias Inspiradoras */
+.fh5co-content-box {
+    padding: 80px 0; /* Ajuste de padding según necesidades */
+    position: relative;
+}
+
+.fh5co-content-box:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff; /* Fondo semi-transparente */
+}
+
+.fh5co-content-box h2 {
+    color: #ffffff;
+    font-size: 48px;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 40px;
+}
+
+.fh5co-content-box .trainers .card {
+    background-color: #35353593; /* Tono gris */
+    border: none;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgb(255, 255, 255); /* Sombra */
+    transition: transform 0.3s ease;
+}
+
+.fh5co-content-box .trainers .card:hover {
+    transform: translateY(-10px); /* Efecto de elevación al hacer hover */
+}
+
+.fh5co-content-box .trainers .card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+}
+
+.fh5co-content-box .trainers .card:hover img {
+    transform: scale(1.1); /* Efecto de zoom al hacer hover */
+}
+
+/*sadsa*/
+.why_section {
+    background-color: #808080;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.custom_heading-container h2 {
+    font-size: 48px;
+    color: #fff; /* Color del texto del título en blanco */
+    margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif; /* Fuente personalizada */
+    text-transform: uppercase; /* Transformar a mayúsculas */
+}
+
+.content-container p {
+    font-size: 20px;
+    color: #ccc; /* Color del texto del párrafo en gris claro */
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.col-md-3 {
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+.col-md-3:hover {
+    transform: translateY(-10px);
+}
+
+.icon-box {
+    background-color: #4CAF50; /* Fondo verde */
+    padding: 20px;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-box svg {
+    color: #fff; /* Color del icono en blanco */
+    font-size: 40px;
+}
+
+.detail-box {
+    
+    background-color: #4CAF50;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.detail-box:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.detail-box h3 {
+    font-size: 60px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif; /* Fuente personalizada */
+}
+
+.detail-box h6 {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 0;
+    font-family: 'Roboto', sans-serif; /* Fuente personalizada */
+    text-transform: uppercase; /* Transformar a mayúsculas */
+}
+/*PIE DE PAGINA*/
+
+/* Estilos para el footer */
+#tempaltemo_footer {
+    background-color: #28a745; /* Fondo verde */
+    color: #fff; /* Texto blanco */
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#tempaltemo_footer .footer-link-list li {
+    margin-bottom: 10px;
+}
+
+#tempaltemo_footer .footer-icons .list-inline-item {
+    margin-right: 10px;
+}
+
+#tempaltemo_footer .footer-icons .list-inline-item a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+#tempaltemo_footer .footer-icons .list-inline-item a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#tempaltemo_footer .input-group-text {
+    cursor: pointer;
+}
+
+#tempaltemo_footer .bg-black {
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+}
+
+#tempaltemo_footer .bg-black p {
+    margin-bottom: 0;
+}
+
+#tempaltemo_footer .logo {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#tempaltemo_footer .footer-link-list a {
+    color: #fff;
+}
+
+#tempaltemo_footer .footer-link-list a:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#tempaltemo_footer .footer-icons .list-inline-item a {
+    color: #fff;
+}
+
+#tempaltemo_footer .footer-icons .list-inline-item a:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+

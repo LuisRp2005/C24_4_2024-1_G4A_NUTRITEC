@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../pages/styles.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserAlt, faBrain } from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = () => {
     const [userName, setUserName] = useState('');
@@ -32,6 +34,7 @@ const NavBar = () => {
 
         fetchUsuario();
     }, []);
+
     return (
         <div className="container-fluid p-0 nav-bar">
             <nav className="navbar navbar-expand-lg navbar-dark">
@@ -49,13 +52,15 @@ const NavBar = () => {
                         <a href="/home" className="nav-item nav-link active">Home</a>
                         <a href="/ViewEjercicio" className="nav-item nav-link">Ejercicios</a>
                         <a href="/viewComida" className="nav-item nav-link">Comida</a>
-                        <a href="/NutriIA" className="nav-item nav-link">NutrIA</a>
+                        <a href="/NutriIA" className="nav-item nav-link" style={{ color: '#7AC534', fontWeight: 'bold' }}>
+                            NutrIA <FontAwesomeIcon icon={faBrain} className='ml-1' />
+                        </a>
                         <a href="/viewComidaDesig" className="nav-item nav-link">Comida Designada</a>
                         <a href="/viewEjercicioDesig" className="nav-item nav-link">Ejercicio Designado</a>
                         
                     </div>
                     <div className="nav-item ms-auto px-5">
-                        <a href='/Usuario'><button className="btn btn-outline-light">{userName || 'Usuario'}</button></a>
+                        <a href='/Usuario'><button className="btn btn-outline-light">{userName || 'Usuario'}<FontAwesomeIcon icon={faUserAlt} className='mx-2'/></button></a>
                     </div>
                 </div>
             </nav>
