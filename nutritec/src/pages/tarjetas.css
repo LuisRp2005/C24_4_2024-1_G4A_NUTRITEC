@@ -1,0 +1,232 @@
+/* Container */
+.comida-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(135deg, #f0fff0, #ffffff);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Backgrounds */
+.comida-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('comida_ref.jpg') no-repeat center center/cover;
+    opacity: 0.1;
+    z-index: -2;
+    filter: blur(5px);
+    animation: moveBackground 20s linear infinite;
+}
+
+.comida-background-2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    background: url('comida2_ref.jpg') no-repeat center center/cover;
+    opacity: 0.1;
+    z-index: -1;
+    filter: blur(3px);
+    transform: rotate(10deg);
+    animation: moveBackground 25s linear infinite reverse;
+}
+
+/* Title */
+.comida-title {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: -webkit-linear-gradient(#32CD32, #006400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: slideInFromTop 1s ease-in-out;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Rows and Columns */
+.comida-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.comida-col {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+/* Cards */
+.comida-card {
+    width: 100%;
+    max-width: 350px;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+    position: relative;
+    animation: fadeInUp 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.comida-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+}
+
+/* Card Image */
+.comida-card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 2px solid #eee;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.comida-card:hover .comida-card-img {
+    transform: scale(1.1);
+    filter: brightness(0.75);
+}
+
+/* Card Body */
+.comida-card-body {
+    padding: 20px;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+    transition: background 0.3s ease-in-out;
+}
+
+.comida-card-body:hover {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+}
+
+/* Card Title */
+.comida-card-title {
+    font-size: 1.75rem;
+    color: #333;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+}
+
+.comida-card-title:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 5px;
+    background: #32CD32;
+    border-radius: 3px;
+    z-index: -1;
+    transition: width 0.3s ease-in-out;
+}
+
+.comida-card:hover .comida-card-title:before {
+    width: 100%;
+}
+
+.comida-card:hover .comida-card-title {
+    color: #006400;
+}
+
+/* Card Text */
+.comida-card-text {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+/* Button */
+.comida-btn-eliminar {
+    background-color: #8a0000;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: inline-block;
+    box-shadow: 0 6px 18px rgba(50, 205, 50, 0.5);
+    font-family: 'Poppins', sans-serif;
+}
+
+.comida-btn-eliminar:hover {
+    background-color: #8b2e2e;
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(46, 139, 87, 0.5);
+}
+
+.comida-btn-eliminar:active {
+    background-color: #228B22;
+    transform: scale(0.95);
+    box-shadow: 0 6px 18px rgba(50, 205, 50, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}

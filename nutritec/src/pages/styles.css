@@ -432,8 +432,13 @@ color: #666;
   background-color: #2d4373; /* Azul más oscuro */
 }
 /**/
+.comida-nutrition-chart {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+}
 
-/*alerta*/
 
 
 

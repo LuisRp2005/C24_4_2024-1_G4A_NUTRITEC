@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NavBar from '../components/Navbar';
+import '../pages/tarjetas.css'; // Asegúrate de importar el archivo CSS
 
 class ViewEjercicioDesig extends Component {
     constructor(props) {
@@ -79,35 +80,43 @@ class ViewEjercicioDesig extends Component {
 
         return (
             <div>
-                <NavBar/>
-                <div className="container">
-                    <h1 className="mt-4 mb-4">Tus Asignaciones de Ejercicio</h1>
+                <NavBar />
+                <div className="comida-background"></div>
+                <div className="comida-container">
+                    <h1 className="comida-title">
+                        {usuario ? `${usuario.nombre} !! ESTOS SON TUS EJERCICIOS DESIGNADOS` : 'Cargando...'}
+                    </h1>
                     {loading ? (
-                        <p className="text-center">Cargando...</p>
+                        <p className="comida-loading">Cargando...</p>
                     ) : error ? (
-                        <p className="text-danger">Error: {error}</p>
+                        <p className="comida-error">Error: {error}</p>
                     ) : (
-                        <div>
+                        <div className="comida-row">
                             {asignacionesEjercicio.length > 0 ? (
-                                <ul className="list-group">
-                                    {asignacionesEjercicio.map(asignacion => (
-                                        <li key={asignacion.idAsignacionEjercicio} className="list-group-item mb-3">
-                                            <div>
-                                                <h4 className="mb-1">{asignacion.ejercicio.nombre}</h4>
-                                                <p className="mb-1"><strong>Nivel:</strong> {asignacion.ejercicio.nivel}</p>
-                                                <p className="mb-1"><strong>Descripción:</strong> {asignacion.ejercicio.descripcion}</p>
+                                asignacionesEjercicio.map(asignacion => (
+                                    <div key={asignacion.idAsignacionEjercicio} className="comida-col">
+                                        <div className="comida-card">
+                                            <img 
+                                                src={`http://127.0.0.1:8000/media/${asignacion.ejercicio.images}`} 
+                                                className="comida-card-img" 
+                                                alt={asignacion.ejercicio.nombre} 
+                                            />
+                                            <div className="comida-card-body">
+                                                <h5 className="comida-card-title">{asignacion.ejercicio.nombre}</h5>
+                                                <p className="comida-card-text"><strong>Nivel:</strong> {asignacion.ejercicio.nivel}</p>
+                                                <p className="comida-card-text"><strong>Descripción:</strong> {asignacion.ejercicio.descripcion}</p>
+                                                <button
+                                                    className="comida-btn-eliminar"
+                                                    onClick={() => this.handleEliminarAsignacion(asignacion.idAsignacionEjercicio)}
+                                                >
+                                                    Eliminar
+                                                </button>
                                             </div>
-                                            <button
-                                                className="btn btn-danger btn-sm float-right"
-                                                onClick={() => this.handleEliminarAsignacion(asignacion.idAsignacionEjercicio)}
-                                            >
-                                                Eliminar
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
+                                        </div>
+                                    </div>
+                                ))
                             ) : (
-                                <p>No se encontraron asignaciones de ejercicio para este usuario.</p>
+                                <p className="comida-empty">No se encontraron asignaciones de ejercicio para este usuario.</p>
                             )}
                         </div>
                     )}

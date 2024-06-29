@@ -1,0 +1,155 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Fondo general */
+  }
+  
+  .section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.692) url('fondo.jpg') no-repeat; /* Color de fondo negro con 50% de opacidad */
+    background-blend-mode: multiply; /* Multiplicar para oscurecer la imagen */
+    background-position: center;
+    background-size: cover;
+}
+
+  
+  .contenedor {
+    position: relative;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+    border: 1px solid #000000; /* Borde suave */
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contenedor h2 {
+    font-size: 2.5rem; /* Tamaño del título */
+    color: #000000; /* Color del texto */
+    margin-bottom: 30px; /* Espacio debajo del título */
+  }
+  
+  .input-contenedor {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center; /* Alinear icono con input */
+  }
+  
+  .input-contenedor label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 0.9rem;
+    color: #888; /* Color del texto de etiqueta */
+    transition: 0.3s ease-out;
+    pointer-events: none;
+  }
+  
+  .input {
+    width: calc(100% - 30px); /* Ajustar ancho para dejar espacio al icono */
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc; /* Línea inferior */
+    font-size: 1rem;
+    color: #333; /* Color del texto */
+    outline: none;
+    background-color: transparent;
+    transition: border-color 0.3s ease-out;
+  }
+  
+  .input:focus {
+    border-color: #009b08; /* Color del borde al enfocar */
+  }
+  
+  .input:focus ~ label,
+  .input:valid ~ label {
+    top: -10px;
+    font-size: 0.8rem; /* Tamaño de la etiqueta al enfocar */
+    color: #000000; /* Color de la etiqueta al enfocar */
+    font-weight: bold;
+  }
+  
+  .olvidar {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #888; /* Color del texto */
+    text-align: right;
+  }
+  
+  .olvidar a {
+    color: #080075; /* Color del enlace */
+    text-decoration: none;
+    transition: 0.3s ease-out;
+  }
+  
+  .olvidar a:hover {
+    text-decoration: underline;
+  }
+  
+  .button {
+    margin-top: 1.5rem;
+    width: 100%;
+    height: 45px;
+    border-radius: 25px; /* Bordes redondeados */
+    background-color: #009b08; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+  }
+  
+  .button:hover {
+    background-color: #008106; /* Color de fondo del botón al pasar el ratón */
+  }
+  
+  .google-button {
+    margin-top: 1rem;
+    width: 100%;
+    height: 45px;
+    border-radius: 25px; /* Bordes redondeados */
+    background-color: #ffffff; /* Color de fondo del botón */
+    color: #000000; /* Color del texto del botón */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;;
+  }
+
+  
+  .registrar {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #888; /* Color del texto */
+    text-align: center;
+  }
+  
+  .registrar a {
+    color: #009b08; /* Color del enlace */
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease-out;
+  }
+  
+  .registrar a:hover {
+    text-decoration: underline;
+  }
+  .title {
+    font-size: 55px;
+    color: #000000;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgb(0, 197, 82); /* Agrega sombra al texto */
+}
+
+  
+  

@@ -8,63 +8,86 @@ const NavBar = () => {
     const [userName, setUserName] = useState('');
 
     useEffect(() => {
-        // Realizar una solicitud GET para obtener los datos del usuario autenticado
         const fetchUsuario = async () => {
             try {
                 const response = await axios.get('http://localhost:8080/api/v1/datos', {
                     headers: {
                         'Content-Type': 'application/json',
-                        // Aquí podrías incluir el token de autorización si es necesario
                     },
-                    withCredentials: true // Incluye credenciales (cookies) en la solicitud
+                    withCredentials: true,
                 });
 
                 if (response.status === 200) {
                     const data = response.data;
-                    setUserName(data.nombre); // Actualizar el estado con el nombre del usuario
+                    setUserName(data.nombre);
                 } else {
                     console.error('Error al obtener datos del usuario:', response.statusText);
-                    // Manejar el error adecuadamente (mostrar mensaje al usuario, etc.)
                 }
             } catch (error) {
                 console.error('Error en la solicitud:', error);
-                // Manejar el error adecuadamente (mostrar mensaje al usuario, etc.)
             }
         };
 
         fetchUsuario();
     }, []);
 
+    const handleLogout = () => {
+        // Eliminar el token de autenticación (si está almacenado en localStorage)
+        localStorage.removeItem('authToken');
+        // O eliminar la cookie de autenticación
+        document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        // Redirigir al usuario a la página de inicio de sesión
+        window.location.href = '/';
+    };
+
     return (
-        <div className="container-fluid p-0 nav-bar">
-            <nav className="navbar navbar-expand-lg navbar-dark">
-                <a href="/home" className="navbar-brand px-lg-4 m-0">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div className="container-fluid">
+                <a className="navbar-brand" href="/home">
                     <h1 className="m-0 display-4">
                         <span style={{ color: '#7AC534'}}>Nutri</span>
                         <span style={{ color: '#fff'}}>Tec</span>
                     </h1>
                 </a>
-                <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div className="navbar-nav ml-auto p-4">
-                        <a href="/home" className="nav-item nav-link active">Home</a>
-                        <a href="/ViewEjercicio" className="nav-item nav-link">Ejercicios</a>
-                        <a href="/viewComida" className="nav-item nav-link">Comida</a>
-                        <a href="/NutriIA" className="nav-item nav-link" style={{ color: '#7AC534', fontWeight: 'bold' }}>
-                            NutrIA <FontAwesomeIcon icon={faBrain} className='ml-1' />
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <a className="nav-link active" aria-current="page" href="/home">Home</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/ViewEjercicio">Ejercicios</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/viewComida">Comida</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/NutriIA" style={{ color: '#7AC534', fontWeight: 'bold' }}>
+                                NutrIA <FontAwesomeIcon icon={faBrain} className='ml-1' />
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/viewComidaDesig">Comida Designada</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/viewEjercicioDesig">Ejercicio Designado</a>
+                        </li>
+                    </ul>
+                    <div className="nav-item dropdown ms-auto px-3 bg-white btn">
+                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {userName || 'Usuario'}<FontAwesomeIcon icon={faUserAlt} className='mx-2'/>
                         </a>
-                        <a href="/viewComidaDesig" className="nav-item nav-link">Comida Designada</a>
-                        <a href="/viewEjercicioDesig" className="nav-item nav-link">Ejercicio Designado</a>
-                        
-                    </div>
-                    <div className="nav-item ms-auto px-5">
-                        <a href='/Usuario'><button className="btn btn-outline-light">{userName || 'Usuario'}<FontAwesomeIcon icon={faUserAlt} className='mx-2'/></button></a>
+                        <ul className="dropdown-menu dropdown-menu-end bg-white" aria-labelledby="navbarDropdown">
+                            <li><a className="dropdown-item" href="/Usuario">Perfil</a></li>
+                            <li><hr className="dropdown-divider" /></li>
+                            <li><button className="dropdown-item" onClick={handleLogout}>Cerrar sesión</button></li>
+                        </ul>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
     );
 }
 

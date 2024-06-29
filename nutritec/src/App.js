@@ -11,6 +11,9 @@ import Formulario from './pages/formulario';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NutriIA from './pages/NutriIA';
 import ViewEjercicioDesig from './pages/ViewEjercicioDesig';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import $ from 'jquery';
+import Popper from 'popper.js';
 
 function App() {
   return (

@@ -1,11 +1,16 @@
-// ViewComida.js
 import React, { Component } from 'react';
 import NavBar from '../components/Navbar';
 import axios from 'axios';
+import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Comida } from '../service/Comida';
 import { CategoriaComida } from '../service/CategoriaComida';
 import NutriIA from '../pages/NutriIA';
 import '../pages/styles.css';
+import { Modal, Button } from 'react-bootstrap';
+
+// Registramos los elementos de Chart.js que vamos a utilizar
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 class ViewComida extends Component {
   constructor() {
@@ -19,7 +24,8 @@ class ViewComida extends Component {
       mostrarNutriIA: false,
       historialConversacion: [],
       loadingUsuario: true,
-      showSuccessAlert: false
+      showSuccessAlert: false,
+      showNutritionChartModal: false
     };
 
     this.comidaService = new Comida();
@@ -140,8 +146,42 @@ class ViewComida extends Component {
     });
   };
 
+  getNutritionData = () => {
+    const { comidas } = this.state;
+    const calories = comidas.map(comida => comida.calorias);
+
+    return {
+      labels: comidas.map(comida => comida.nombreComida),
+      datasets: [
+        {
+          data: calories,
+          backgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56',
+            '#4BC0C0',
+            '#9966FF',
+            '#FF9F40'
+          ],
+          hoverBackgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56',
+            '#4BC0C0',
+            '#9966FF',
+            '#FF9F40'
+          ]
+        }
+      ]
+    };
+  };
+
+  toggleNutritionChartModal = () => {
+    this.setState(prevState => ({ showNutritionChartModal: !prevState.showNutritionChartModal }));
+  };
+
   render() {
-    const { comidas, categorias, filtroCategoria, usuario, preguntaNutriIA, mostrarNutriIA, historialConversacion, loadingUsuario, showSuccessAlert } = this.state;
+    const { comidas, categorias, filtroCategoria, usuario, preguntaNutriIA, mostrarNutriIA, historialConversacion, loadingUsuario, showSuccessAlert, showNutritionChartModal } = this.state;
 
     if (loadingUsuario) {
       return <p>Cargando...</p>;
@@ -163,6 +203,9 @@ class ViewComida extends Component {
             <div className="text-center mb-5">
               <h1 className="display-3 mb-0" style={{ color: '#7AC534' }}>¡Bienvenido {usuario.nombre ? usuario.nombre : 'Usuario'}!</h1>
               <p className="lead mb-4">Explora nuestra selección de comidas disponibles para ti</p>
+              <button className="btn btn-info" onClick={this.toggleNutritionChartModal}>
+                {showNutritionChartModal ? 'Ocultar Gráfico Nutricional' : 'Mostrar Gráfico Nutricional'}
+              </button>
             </div>
             <div className="text-center mb-4 pb-3">
               <h6 className="text-primary text-uppercase" style={{ letterSpacing: '5px' }}>Categoría</h6>
@@ -235,6 +278,23 @@ class ViewComida extends Component {
             </div>
           </div>
         )}
+
+        {/* Modal Gráfico Nutricional */}
+        <Modal show={showNutritionChartModal} onHide={this.toggleNutritionChartModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Gráfico Nutricional</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="comida-nutrition-chart">
+              <Doughnut data={this.getNutritionData()} />
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.toggleNutritionChartModal}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
 
         {/* Modal NutriIA */}
         {mostrarNutriIA && (

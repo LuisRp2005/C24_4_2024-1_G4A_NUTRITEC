@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from '../components/Navbar';
 import axios from 'axios';
+import '../pages/tarjetas.css'; // Asegúrate de importar el archivo CSS
 
 class ViewComidaDesig extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ class ViewComidaDesig extends Component {
 
     fetchComidasDesignadas = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/asignacion-comidas`, {
+            const response = await axios.get('http://localhost:8080/api/asignacion-comidas', {
                 withCredentials: true
             });
 
@@ -63,11 +64,9 @@ class ViewComidaDesig extends Component {
                 withCredentials: true
             });
 
-            // Actualizar la lista de comidas designadas después de eliminar
             this.fetchComidasDesignadas();
         } catch (error) {
             console.error('Error al eliminar la comida designada:', error);
-            // Manejar el error según sea necesario
         }
     };
 
@@ -82,34 +81,42 @@ class ViewComidaDesig extends Component {
         return (
             <div>
                 <NavBar />
-                <div className="container">
-                    <h1 className="mt-4 mb-4">Tus Comidas Designadas</h1>
+                <div className="comida-background"></div>
+                <div className="comida-container">
+                    <h1 className="comida-title">
+                        {usuario ? `${usuario.nombre} !! ESTAS SON TUS COMIDAS DESIGNADAS` : 'Cargando...'}
+                    </h1>
                     {loading ? (
-                        <p>Cargando...</p>
+                        <p className="comida-loading">Cargando...</p>
                     ) : error ? (
-                        <p className="text-danger">Error: {error}</p>
+                        <p className="comida-error">Error: {error}</p>
                     ) : (
-                        <div>
+                        <div className="comida-row">
                             {comidasUsuario.length > 0 ? (
-                                <ul className="list-group">
-                                    {comidasUsuario.map(comida => (
-                                        <li key={comida.idAsignacionComida} className="list-group-item mb-3">
-                                            <div>
-                                                <h4 className="mb-1">{comida.comida.nombreComida}</h4>
-                                                <p className="mb-1"><strong>Calorias de la comida:</strong> {comida.comida.calorias}</p>
-                                                <p className="mb-1"><strong>Fecha de Registro:</strong> {comida.fechaHoraRegistro}</p>
+                                comidasUsuario.map(comida => (
+                                    <div key={comida.idAsignacionComida} className="comida-col">
+                                        <div className="comida-card">
+                                            <img 
+                                                src={`http://127.0.0.1:8000/media/${comida.comida.images}`} 
+                                                className="comida-card-img" 
+                                                alt={comida.comida.nombreComida} 
+                                            />
+                                            <div className="comida-card-body">
+                                                <h5 className="comida-card-title">{comida.comida.nombreComida}</h5>
+                                                <p className="comida-card-text"><strong>Calorías:</strong> {comida.comida.calorias}</p>
+                                                <p className="comida-card-text"><strong>Fecha de Registro:</strong> {comida.fechaHoraRegistro}</p>
+                                                <button
+                                                    className="comida-btn-eliminar"
+                                                    onClick={() => this.handleEliminarComida(comida.idAsignacionComida)}
+                                                >
+                                                    Eliminar
+                                                </button>
                                             </div>
-                                            <button
-                                                className="btn btn-danger btn-sm float-right"
-                                                onClick={() => this.handleEliminarComida(comida.idAsignacionComida)}
-                                            >
-                                                Eliminar
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
+                                        </div>
+                                    </div>
+                                ))
                             ) : (
-                                <p>No se encontraron comidas designadas para este usuario.</p>
+                                <p className="comida-empty">No se encontraron comidas designadas para este usuario.</p>
                             )}
                         </div>
                     )}

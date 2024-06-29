@@ -72,8 +72,9 @@ function NutriIA({ preguntaInicial, historialConversacion }) {
     };
 
     return (
+        
         <div className="nutri-ia-container">
-            <NavBar />
+            <NavBar/>
             <div className="chat-container">
                 <div className="sidebar">
                     <div className="sidebar-header">
